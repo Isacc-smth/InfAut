@@ -1,0 +1,13 @@
+.settings/
+target/
+.project
+
+# IntelliJ IDEA
+.idea/
+
+# Vsual Studio Code
+.code-workspace/
+.vscode/
+
+# Este es por si estes trabajando con Netbeans
+nbactions.xml
