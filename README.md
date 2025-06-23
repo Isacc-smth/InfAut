@@ -18,9 +18,9 @@ un proyecto expuesto en la Expotecnia 2025
 - Se van a digitalizar las hojas catedra con el formato usado en el colegio, permitiendo
   a los docentes imprimir cuando les parezca necesario.
 
-#### Dependencias
+#### Dependencias/Requisitos
 
 - JasperReports para la generacion de reportes, que corresponden a las hojas catedra.
 - Java 17 y superior para la ejecucion del proyecto.
 - JAvaFX para la interfaz grafica del proyecto.
-- La CLI de Arduino para la comunicacion con los modulos Arduino.
+- La CLI o IDE de Arduino para compilar su respectivo codigo.

@@ -11,3 +11,6 @@ target/
 
 # Este es por si estes trabajando con Netbeans
 nbactions.xml
+
+# Archivo comunmente usado por IDES y editores para determinar jerarquia de clases dentro del proyecto
+# .classpath
