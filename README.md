@@ -18,9 +18,32 @@ un proyecto expuesto en la Expotecnia 2025
 - Se van a digitalizar las hojas catedra con el formato usado en el colegio, permitiendo
   a los docentes imprimir cuando les parezca necesario.
 
+### Compilar el proyecto
+
 #### Dependencias/Requisitos
 
 - JasperReports para la generacion de reportes, que corresponden a las hojas catedra.
 - Java 17 y superior para la ejecucion del proyecto.
+- Maven 3.8 o superior
 - JAvaFX para la interfaz grafica del proyecto.
 - La CLI o IDE de Arduino para compilar su respectivo codigo.
+
+#### Como armar el proyecto
+
+##### Parte Java
+
+```sh
+mvn clean-package # Compilar el proyecto
+```
+
+puedes abrir el jar en:
+
+```sh
+./target/Infaut-1.0-SNAPSHOT.jar # No creo que cambie la version porque realmente no importa
+```
+
+o alternativamente puedes ejecutar
+
+```sh
+mvn exec:java -Dexec.mainClass="ctn.infaut.App" # Ejecutar mediante maven
+```
