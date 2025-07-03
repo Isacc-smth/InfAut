@@ -5,7 +5,7 @@
 Este es el repositorio del proyecto Infaut,
 un proyecto expuesto en la Expotecnia 2025
 
-> [!NOTE]
+> [!CAUTION]
 > Falta la parte de Arduino. que tengo que ver como organizar esa parte.
 > Por ahora quiero hacer en este mismo repositorio
 
@@ -15,14 +15,11 @@ un proyecto expuesto en la Expotecnia 2025
   esto se va hacer mediante lectores de huella y modulos Arduino.
 - La entrada y salida sera registrada en una base de datos para que el docente tenga
   rastro de quienes estan y quienes no estan en el aula en un cierto momento.
-- Se van a digitalizar las hojas catedra con el formato usado en el colegio, permitiendo
-  a los docentes imprimir cuando les parezca necesario.
 
 ### Compilar el proyecto
 
 #### Dependencias/Requisitos
 
-- JasperReports para la generacion de reportes, que corresponden a las hojas catedra.
 - Java 17 y superior para la ejecucion del proyecto.
 - Maven 3.8 o superior
 - JAvaFX para la interfaz grafica del proyecto.
@@ -47,3 +44,6 @@ o alternativamente puedes ejecutar
 ```sh
 mvn exec:java -Dexec.mainClass="ctn.infaut.App" # Ejecutar mediante maven
 ```
+
+> [!CAUTION]
+> Faltan tambien instrucciones de como compilar la apk, con gradle
