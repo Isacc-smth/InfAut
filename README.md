@@ -5,10 +5,6 @@
 Este es el repositorio del proyecto Infaut,
 un proyecto expuesto en la Expotecnia 2025
 
-> [!CAUTION]
-> Falta la parte de Arduino. que tengo que ver como organizar esa parte.
-> Por ahora quiero hacer en este mismo repositorio
-
 ### Funcionalidades
 
 - Autenticacion por huella para la entrada y salida del aula de los alumnos,
@@ -20,9 +16,19 @@ un proyecto expuesto en la Expotecnia 2025
 
 #### Dependencias/Requisitos
 
+##### General
+
 - Java 17 y superior para la ejecucion del proyecto.
 - Maven 3.8 o superior
-- JAvaFX para la interfaz grafica del proyecto.
+- JAvaFX para la interfaz grafica del programa de administrador.
+
+##### App android (en caso de querer compilar el apk)
+
+- Kotlin, como para el SDK de Android versino 24 o superior
+- La APK funciona hasta java 11
+
+##### Arduino (sin terminar)
+
 - La CLI o IDE de Arduino para compilar su respectivo codigo.
 
 #### Como armar el proyecto
@@ -33,17 +39,32 @@ un proyecto expuesto en la Expotecnia 2025
 mvn clean-package # Compilar el proyecto
 ```
 
-puedes abrir el jar en:
+podes abrir el jar con:
 
 ```sh
-./target/Infaut-1.0-SNAPSHOT.jar # No creo que cambie la version porque realmente no importa
+java - jar ./target/Infaut-1.0-SNAPSHOT.jar
 ```
 
-o alternativamente puedes ejecutar
+o alternativamente podes ejecutar
 
 ```sh
 mvn exec:java -Dexec.mainClass="ctn.infaut.App" # Ejecutar mediante maven
 ```
 
-> [!CAUTION]
-> Faltan tambien instrucciones de como compilar la apk, con gradle
+##### Parte Android
+
+La forma más sencilla de instalar es mediante la seccion de
+[Releases](https://github.com/Isacc-smth/InfAut/releases)
+
+##### Compilar el apk
+
+En la carpeta root del proyecto (donde esta este archivo), ejecutar:
+
+```sh
+# En linux/Mac
+./gradlew build
+# En Windows
+.\gradlew.bat build
+```
+
+Una vez finalize
