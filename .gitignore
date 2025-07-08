@@ -1,6 +1,10 @@
 .settings/
 target/
 .project
+.gradle/
+
+# Carpeta donde se arma el apk (App de Android, lo mas probable es que solo puedas probar desde android studio)
+./android/build/
 
 # IntelliJ IDEA
 .idea/
