@@ -24,5 +24,6 @@ replay_pid*
 
 # Makefile kachi'ai que uso para compilar rapido
 Makefile
+kls_database.db
 
 secrets/

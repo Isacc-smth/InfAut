@@ -14,7 +14,7 @@ un proyecto expuesto en la Expotecnia 2025
 
 ### Compilar el proyecto
 
-#### Dependencias/Requisitos
+#### Requisitos
 
 ##### General
 
@@ -67,4 +67,8 @@ En la carpeta root del proyecto (donde esta este archivo), ejecutar:
 .\gradlew.bat build
 ```
 
-Una vez finalize
+Una vez finalize la compilacion, el APK esta en
+
+```sh
+./android/app/build/outputs/apk/debug/
+```
