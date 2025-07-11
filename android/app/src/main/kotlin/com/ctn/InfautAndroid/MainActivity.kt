@@ -14,27 +14,26 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.ctn.InfautAndroid.ui.theme.InfautAndroidTheme
 
 class MainActivity : ComponentActivity() {
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    enableEdgeToEdge()
-    setContent {
-      InfautAndroidTheme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-          Greeting(name = "Android", modifier = Modifier.padding(innerPadding))
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            InfautAndroidTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Greeting(name = "Cepe", modifier = Modifier.padding(innerPadding))
+                }
+            }
         }
-      }
     }
-  }
 }
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-  Text(text = "Hello $name!", modifier = modifier)
+    Text(text = "Hello $name!", modifier = modifier)
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-  InfautAndroidTheme { Greeting("Android") }
+    InfautAndroidTheme { Greeting("Cepe") }
 }
-
