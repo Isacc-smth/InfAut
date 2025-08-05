@@ -18,12 +18,9 @@ nbactions.xml
 
 # Archivo comunmente usado por IDES y editores para determinar jerarquia de clases dentro del proyecto
 # .classpath
-e crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
 
-# Makefile kachi'ai que uso para compilar rapido
+# Makefile kachi'ai que uso para compilar rapido (los dos)
 Makefile
 kls_database.db
-
-secrets/
