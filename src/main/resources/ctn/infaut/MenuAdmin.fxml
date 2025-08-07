@@ -35,12 +35,6 @@
               text="Aula" />
           </items>
         </Menu>
-        <Menu fx:id="AboutMenu" mnemonicParsing="false" text="Acerca de">
-          <items>
-            <!-- MenuItem fx:id="InfautDocsItem" mnemonicParsing="false" onAction="#openDocs"
-              text="Infaut" -->
-          </items>
-        </Menu>
       </menus>
     </MenuBar>
     <Label layoutX="191.0" layoutY="62.0" prefHeight="86.0" prefWidth="243.0" text="¡Bienvenido!"
