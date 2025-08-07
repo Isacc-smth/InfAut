@@ -33,7 +33,7 @@ import javafx.scene.control.MenuItem;
 public class MenuAdminController implements Initializable {
 
   Parent root;
-  Stage stage;
+  Stage stage = new Stage();
 
   @FXML
   private MenuBar MainMenuBar;
@@ -74,7 +74,6 @@ public class MenuAdminController implements Initializable {
     FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
     try {
       root = loader.load();
-      stage = new Stage();
 
       stage.setScene(new Scene(root));
       stage.setTitle(title);
@@ -87,7 +86,6 @@ public class MenuAdminController implements Initializable {
       Logger.getLogger(MenuAdminController.class.getName()).log(Level.SEVERE, null, e);
     }
 
-    stage.setResizable(false);
     stage.show();
   }
 
