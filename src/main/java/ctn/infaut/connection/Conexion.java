@@ -7,14 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public interface Conexion {
-
-  public boolean insertar();
-
-  public boolean modificar();
-
-  public boolean eliminar();
-
+public class Conexion {
   public static Connection getCon() throws SQLException {
     Properties props = new Properties();
     try (FileInputStream db = new FileInputStream("db.properties")) {

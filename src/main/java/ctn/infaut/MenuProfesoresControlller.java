@@ -1,6 +1,7 @@
 package ctn.infaut;
 
 import ctn.infaut.controllers.Docente;
+import ctn.infaut.services.DocenteService;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -77,7 +78,7 @@ public class MenuProfesoresControlller implements Initializable {
   }
 
   private void updateTable() throws SQLException {
-    rows = FXCollections.observableArrayList(d.consulta());
+    rows = FXCollections.observableArrayList(DocenteService.consulta());
 
     idDocente.setCellValueFactory(new PropertyValueFactory<>("idDocente"));
     Nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
@@ -112,7 +113,7 @@ public class MenuProfesoresControlller implements Initializable {
       int teacherId = Integer.parseInt(TeacherIDField.getText());
 
       d = new Docente(teacherId, name, lastName, idNumber);
-      if (d.eliminar()) {
+      if (DocenteService.eliminar(d)) {
         Alert DeleteSuccess = generateAlert(Alert.AlertType.INFORMATION,
             "Se borro al docente con extio. Fuiste advertido");
         cleanFields();
@@ -186,7 +187,7 @@ public class MenuProfesoresControlller implements Initializable {
     if (this.isUpdatingRow) {
       d.setIdDocente(Integer.parseInt(TeacherIDField.getText()));
 
-      if (d.modificar()) {
+      if (DocenteService.modificar(d)) {
         Alert ModifySuccess = generateAlert(Alert.AlertType.INFORMATION, "Se modifico con exito los datos del docente");
         ModifySuccess.show();
       } else {
@@ -194,7 +195,7 @@ public class MenuProfesoresControlller implements Initializable {
         ModifyFailure.show();
       }
     } else {
-      if (d.insertar()) {
+      if (DocenteService.insertar(d)) {
         Alert InsertSuccess = generateAlert(Alert.AlertType.INFORMATION, "Se inserto al docente con exito");
         InsertSuccess.show();
       } else {
