@@ -12,12 +12,13 @@
   <children>
     <Pane disable="true" layoutX="35.0" layoutY="54.0" prefHeight="205.0" prefWidth="200.0" style="-fx-background-color: rgb(120, 50, 50); -fx-border-style: solid; -fx-background-radius: 19px; -fx-border-radius: 19px; -fx-border-color: rgb(255, 255, 255);">
       <children>
-        <Label layoutX="35.0" layoutY="11.0" prefHeight="28.0" prefWidth="130.0" text="Menu de Docentes" textFill="WHITE" />
+        <Label layoutX="35.0" prefHeight="28.0" prefWidth="130.0" text="Menu de Docentes" textFill="WHITE" />
+        <TextField fx:id="TeacherIDField" disable="true" layoutX="12.0" layoutY="28.0" promptText="ID del Docente" />
       </children>
     </Pane>
     <Pane layoutX="271.0" layoutY="-1.0" prefHeight="400.0" prefWidth="329.0" style="-fx-background-color: rgb(125, 90, 90);">
       <children>
-        <TableView fx:id="TeachersList" layoutX="16.0" layoutY="48.0" prefHeight="297.0" prefWidth="302.0">
+        <TableView fx:id="TeachersList" layoutX="16.0" layoutY="48.0" onMouseClicked="#completeFields" prefHeight="297.0" prefWidth="302.0">
           <columns>
             <TableColumn fx:id="idDocente" prefWidth="75.0" text="idDocente" />
             <TableColumn fx:id="Nombre" prefWidth="75.0" text="Nombre" />
@@ -30,10 +31,9 @@
     <TextField fx:id="NameField" disable="true" layoutX="45.0" layoutY="121.0" promptText="Nombre" />
     <TextField fx:id="LastNameField" disable="true" layoutX="45.0" layoutY="166.0" promptText="Apellido" />
     <TextField fx:id="IDNumberField" disable="true" layoutX="45.0" layoutY="209.0" promptText="Numero de CI" />
-    <Button fx:id="New" layoutX="5.0" layoutY="318.0" mnemonicParsing="false" onAction="#newEntry" text="Nuevo" />
-    <Button fx:id="Modify" disable="true" layoutX="174.0" layoutY="319.0" mnemonicParsing="false" onAction="#updateEntry" prefHeight="24.0" prefWidth="82.0" text="Modificar" />
-    <Button fx:id="Delete" disable="true" layoutX="88.0" layoutY="319.0" mnemonicParsing="false" onAction="#deleteEntry" text="Borrar" />
-    <Button fx:id="Cancel" cancelButton="true" disable="true" layoutX="41.0" layoutY="360.0" mnemonicParsing="false" onAction="#cancelOperation" text="Cancelar" />
-    <Button fx:id="Save" cancelButton="true" disable="true" layoutX="141.0" layoutY="359.0" mnemonicParsing="false" onAction="#saveChanges" text="Guardar" />
+    <Button fx:id="New" layoutX="13.0" layoutY="318.0" mnemonicParsing="false" onAction="#newEntry" text="Nuevo" />
+    <Button fx:id="Delete" disable="true" layoutX="177.0" layoutY="318.0" mnemonicParsing="false" onAction="#deleteEntry" text="Borrar" />
+    <Button fx:id="Cancel" cancelButton="true" disable="true" layoutX="93.0" layoutY="362.0" mnemonicParsing="false" onAction="#cancelOperation" text="Cancelar" />
+    <Button fx:id="Save" cancelButton="true" disable="true" layoutX="95.0" layoutY="318.0" mnemonicParsing="false" onAction="#saveChanges" text="Guardar" />
   </children>
 </AnchorPane>
