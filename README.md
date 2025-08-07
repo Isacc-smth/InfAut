@@ -54,7 +54,7 @@ mvn exec:java -Dexec.mainClass="ctn.infaut.App" # Ejecutar mediante maven
 ##### Parte Android
 
 La forma más sencilla de instalar es mediante la seccion de
-[Releases](https://github.com/Isacc-smth/InfAut/releases)
+[Releases](https://github.com/Isacc-smth/InfAut/releases) (pendiente)
 
 ##### Compilar el apk
 
