@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import ctn.infaut.connection.Conexion;
-
 public class App extends Application {
 
   private static Scene scene;

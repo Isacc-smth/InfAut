@@ -4,13 +4,20 @@
  */
 package ctn.infaut;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -24,6 +31,10 @@ import javafx.scene.control.MenuItem;
  *         isaacfeltes
  */
 public class MenuAdminController implements Initializable {
+
+  Parent root;
+  Stage stage;
+
   @FXML
   private MenuBar MainMenuBar;
   @FXML
@@ -59,31 +70,53 @@ public class MenuAdminController implements Initializable {
 
   }
 
-  @FXML
-  private void openTeacherMenu(ActionEvent event) {
+  public void openFXML(String fxml, String title, ActionEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+    try {
+      root = loader.load();
+      stage = new Stage();
+
+      stage.setScene(new Scene(root));
+      stage.setTitle(title);
+      stage.setResizable(false);
+
+      stage.show();
+
+    } catch (IOException e) {
+      System.err.println("Ocurrio un error: ");
+      Logger.getLogger(MenuAdminController.class.getName()).log(Level.SEVERE, null, e);
+    }
+
+    stage.setResizable(false);
+    stage.show();
   }
 
   @FXML
-  private void openStudentMenu(ActionEvent event) {
+  private void openTeacherMenu(ActionEvent event) throws IOException {
+    openFXML("MenuProfesores.fxml", "Menu de Tabla Profesores", event);
   }
 
   @FXML
-  private void openFingerprintMenu(ActionEvent event) {
+  private void openStudentMenu(ActionEvent event) throws IOException {
   }
 
   @FXML
-  private void openAssignatureMenu(ActionEvent event) {
+  private void openFingerprintMenu(ActionEvent event) throws IOException {
   }
 
   @FXML
-  private void openCourseMenu(ActionEvent event) {
+  private void openAssignatureMenu(ActionEvent event) throws IOException {
+  }
+
+  @FXML
+  private void openCourseMenu(ActionEvent event) throws IOException {
   }
 
   @FXML
   private void openClassroomMenu(ActionEvent event) {
   }
 
-  @FXML
-  private void openDocs(ActionEvent event) {
-  }
+  // @FXML
+  // private void openDocs(ActionEvent event) {
+  // }
 }
