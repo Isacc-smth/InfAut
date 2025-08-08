@@ -132,22 +132,23 @@ public class MenuProfesoresControlller implements Initializable {
   private void completeFields(MouseEvent event) {
     d = getSelectedRow();
 
-    TeacherIDField.setText(String.valueOf(d.getIdDocente()));
-    NameField.setText(d.getNombre());
-    LastNameField.setText(d.getApellido());
-    IDNumberField.setText(String.valueOf(d.getCI()));
+    if (d != null) {
+      TeacherIDField.setText(String.valueOf(d.getIdDocente()));
+      NameField.setText(d.getNombre());
+      LastNameField.setText(d.getApellido());
+      IDNumberField.setText(String.valueOf(d.getCI()));
 
-    NameField.setDisable(false);
-    LastNameField.setDisable(false);
-    IDNumberField.setDisable(false);
+      NameField.setDisable(false);
+      LastNameField.setDisable(false);
+      IDNumberField.setDisable(false);
 
-    Cancel.setDisable(false);
-    Save.setDisable(false);
-    New.setDisable(true);
-    Delete.setDisable(false);
+      Cancel.setDisable(false);
+      Save.setDisable(false);
+      New.setDisable(true);
+      Delete.setDisable(false);
 
-    isUpdatingRow = true;
-    // System.out.println("isUpdatingRow was set to true");
+      isUpdatingRow = true;
+    }
   }
 
   @FXML
