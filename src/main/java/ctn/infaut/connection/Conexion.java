@@ -11,7 +11,6 @@ public class Conexion {
   public static Connection getCon() throws SQLException {
     Properties props = new Properties();
     try (FileInputStream db = new FileInputStream("db.properties")) {
-      // NOTE: Fijate lo que te puse en el .gitignore
       props.load(db);
       String url = props.getProperty("db.url");
 
