@@ -3,6 +3,8 @@ target/
 .project
 .gradle/
 
+.kotlin
+
 # Carpeta donde se arma el apk (App de Android, lo mas probable es que solo puedas probar desde android studio)
 ./android/build/
 
