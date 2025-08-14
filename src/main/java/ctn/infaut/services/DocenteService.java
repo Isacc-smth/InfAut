@@ -57,8 +57,8 @@ public class DocenteService {
       pstmt.setInt(1, d.getIdDocente());
       pstmt.executeUpdate();
       return true;
-    } catch (SQLException ex) {
-      Logger.getLogger(Docente.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (SQLException e) {
+      System.err.println("Hubo un error al eliminar al docente" + e.getMessage());
       return false;
     }
   }
@@ -77,9 +77,8 @@ public class DocenteService {
                 rs.getString("apellido"),
                 rs.getInt("ci")));
       }
-    } catch (SQLException ex) {
-      System.err.println("Hubo un error al obtener los docentes: ");
-      Logger.getLogger(Docente.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (SQLException e) {
+      System.err.println("Hubo un error al obtener los docentes: " + e.getMessage());
       return null;
     }
 

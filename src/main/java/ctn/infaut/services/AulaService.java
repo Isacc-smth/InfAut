@@ -11,7 +11,7 @@ import ctn.infaut.connection.Conexion;
 import ctn.infaut.controllers.Aula;
 
 public class AulaService {
-  public boolean insertar(Aula a) {
+  public static boolean insertar(Aula a) {
     String sql = "INSERT INTO infaut.aula (descripcion) VALUES (?)";
     try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
       pstmt.setString(1, a.getDescripcion());
@@ -23,7 +23,7 @@ public class AulaService {
     }
   }
 
-  public boolean eliminar(Aula a) {
+  public static boolean eliminar(Aula a) {
     String sql = "DELETE FROM infaut.aula WHERE id_aula = ?";
     try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
       pstmt.setInt(1, a.getIdAula());
@@ -35,7 +35,7 @@ public class AulaService {
     }
   }
 
-  public ArrayList<Aula> consulta() {
+  public static ArrayList<Aula> consulta() {
     ArrayList<Aula> rooms = new ArrayList<>();
     String sql = "SELECT * FROM infaut.aula WHERE 1=1";
 
@@ -54,7 +54,7 @@ public class AulaService {
     return rooms;
   }
 
-  public boolean modificar(Aula a) {
+  public static boolean modificar(Aula a) {
     String sql = "UPDATE FROM infaut.aula SET descripcion = ? WHERE id_aula = ?";
     try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
       pstmt.setString(1, a.getDescripcion());
@@ -66,6 +66,5 @@ public class AulaService {
       System.err.println("Ocurrio un error al modificar el aula: " + e.getMessage());
       return false;
     }
-
   }
 }
