@@ -7,13 +7,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.MenuAulasController">
    <children>
-      <TableView layoutX="330.0" layoutY="38.0" prefHeight="331.0" prefWidth="212.0">
+      <TableView fx:id="RoomsTable" layoutX="330.0" layoutY="38.0" onMouseClicked="#completeField" prefHeight="331.0" prefWidth="212.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="idAula" />
-          <TableColumn prefWidth="136.0" text="Descripcion" />
+          <TableColumn fx:id="idColumn" prefWidth="75.0" text="idAula" />
+          <TableColumn fx:id="descColumn" prefWidth="136.0" text="Descripcion" />
         </columns>
       </TableView>
       <Pane prefHeight="400.0" prefWidth="291.0" style="-fx-background-color: gray;">
@@ -21,14 +20,14 @@
             <Pane layoutX="40.0" layoutY="61.0" prefHeight="135.0" prefWidth="212.0" style="-fx-background-color: brown;">
                <children>
                   <Label layoutX="66.0" layoutY="24.0" text="Menu de Aulas" textFill="#b2b2b2" />
-                  <TextField disable="true" layoutX="26.0" layoutY="64.0" promptText="Descripcion" />
+                  <TextField fx:id="Description" disable="true" layoutX="28.0" layoutY="97.0" promptText="Descripcion" />
+                  <TextField fx:id="RoomId" disable="true" layoutX="28.0" layoutY="56.0" promptText="ID del Aula" />
                </children>
             </Pane>
-            <Button layoutX="40.0" layoutY="230.0" mnemonicParsing="false" text="Nuevo" />
-            <Button disable="true" layoutX="198.0" layoutY="230.0" mnemonicParsing="false" text="Modificar" />
-            <Button disable="true" layoutX="114.0" layoutY="230.0" mnemonicParsing="false" text="Guardar" />
-            <Button disable="true" layoutX="76.0" layoutY="272.0" mnemonicParsing="false" text="Borrar" />
-            <Button disable="true" layoutX="145.0" layoutY="272.0" mnemonicParsing="false" text="Cancelar" />
+            <Button fx:id="New" layoutX="40.0" layoutY="230.0" mnemonicParsing="false" onAction="#newRoom" text="Nuevo" />
+            <Button fx:id="Save" disable="true" layoutX="184.0" layoutY="230.0" mnemonicParsing="false" onAction="#saveChanges" text="Guardar" />
+            <Button fx:id="Delete" disable="true" layoutX="76.0" layoutY="272.0" mnemonicParsing="false" text="Borrar" />
+            <Button fx:id="Cancel" disable="true" layoutX="145.0" layoutY="272.0" mnemonicParsing="false" onAction="#cancelCanges" text="Cancelar" />
          </children>
       </Pane>
    </children>

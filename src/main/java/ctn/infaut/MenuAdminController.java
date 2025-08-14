@@ -111,7 +111,8 @@ public class MenuAdminController implements Initializable {
   }
 
   @FXML
-  private void openClassroomMenu(ActionEvent event) {
+  private void openClassroomMenu(ActionEvent event) throws IOException {
+    openFXML("MenuAulas.fxml", "Menu de Tabla Aulas", event);
   }
 
   // @FXML
