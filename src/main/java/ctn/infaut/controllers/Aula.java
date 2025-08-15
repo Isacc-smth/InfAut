@@ -27,4 +27,8 @@ public class Aula {
     this.idAula = idAula;
     this.descripcion = descripcion;
   }
+
+	public Aula(String descripcion) {
+    this.descripcion = descripcion;
+	}
 }

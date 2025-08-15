@@ -1,14 +1,12 @@
 package ctn.infaut.services;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
-
-import java.util.ArrayList;
-
 import ctn.infaut.connection.Conexion;
 import ctn.infaut.controllers.Aula;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 public class AulaService {
   public static boolean insertar(Aula a) {
@@ -39,8 +37,8 @@ public class AulaService {
     ArrayList<Aula> rooms = new ArrayList<>();
     String sql = "SELECT * FROM infaut.aula WHERE 1=1";
 
-    try (Statement stmt = Conexion.getCon().prepareStatement(sql)) {
-      ResultSet rs = stmt.getResultSet();
+    try (Statement stmt = Conexion.getCon().createStatement()) {
+      ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {
         rooms.add(new Aula(
             rs.getInt("id_aula"),
@@ -55,10 +53,10 @@ public class AulaService {
   }
 
   public static boolean modificar(Aula a) {
-    String sql = "UPDATE FROM infaut.aula SET descripcion = ? WHERE id_aula = ?";
+    String sql = "UPDATE infaut.aula SET descripcion = ? WHERE id_aula = ?";
     try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
       pstmt.setString(1, a.getDescripcion());
-      pstmt.setInt(1, a.getIdAula());
+      pstmt.setInt(2, a.getIdAula());
 
       pstmt.executeUpdate();
       return true;

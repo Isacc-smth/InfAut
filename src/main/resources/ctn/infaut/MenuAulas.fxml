@@ -26,8 +26,8 @@
             </Pane>
             <Button fx:id="New" layoutX="40.0" layoutY="230.0" mnemonicParsing="false" onAction="#newRoom" text="Nuevo" />
             <Button fx:id="Save" disable="true" layoutX="184.0" layoutY="230.0" mnemonicParsing="false" onAction="#saveChanges" text="Guardar" />
-            <Button fx:id="Delete" disable="true" layoutX="76.0" layoutY="272.0" mnemonicParsing="false" text="Borrar" />
-            <Button fx:id="Cancel" disable="true" layoutX="145.0" layoutY="272.0" mnemonicParsing="false" onAction="#cancelCanges" text="Cancelar" />
+            <Button fx:id="Delete" disable="true" layoutX="76.0" layoutY="272.0" mnemonicParsing="false" onAction="#deleteRoom" text="Borrar" />
+            <Button fx:id="Cancel" disable="true" layoutX="145.0" layoutY="272.0" mnemonicParsing="false" onAction="#cancelOperation" text="Cancelar" />
          </children>
       </Pane>
    </children>

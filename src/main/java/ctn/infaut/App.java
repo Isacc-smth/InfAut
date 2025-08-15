@@ -1,4 +1,4 @@
-// Nop, no uso javadoc
+// Nop, no uso javadoc (por ahora)
 
 package ctn.infaut;
 

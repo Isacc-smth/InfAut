@@ -2,6 +2,7 @@ package ctn.infaut;
 
 import ctn.infaut.controllers.Docente;
 import ctn.infaut.services.DocenteService;
+import ctn.infaut.services.AlertFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -19,7 +20,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
@@ -63,18 +63,10 @@ public class MenuProfesoresControlller implements Initializable {
     try {
       updateTable();
     } catch (SQLException e) {
-      Alert TableRetrieveFailure = generateAlert(Alert.AlertType.ERROR,
+      Alert TableRetrieveFailure = AlertFactory.generateAlert(Alert.AlertType.ERROR,
           "Error al obtener a los docentes: \n" + e.getMessage());
       TableRetrieveFailure.show();
     }
-  }
-
-  private Alert generateAlert(Alert.AlertType at, String content) {
-    Alert a = new Alert(at);
-    a.setHeaderText("El sistema comunica:");
-    a.setContentText(content);
-
-    return a;
   }
 
   private void updateTable() throws SQLException {
@@ -101,7 +93,7 @@ public class MenuProfesoresControlller implements Initializable {
 
   @FXML
   private void deleteEntry(ActionEvent event) throws SQLException {
-    Alert ConfirmDelete = generateAlert(Alert.AlertType.CONFIRMATION,
+    Alert ConfirmDelete = AlertFactory.generateAlert(Alert.AlertType.CONFIRMATION,
         "Seguro que desea borrar al docente." + "ESTA ACCION NO SE PUEDE REVERTIR");
 
     Optional<ButtonType> optional = ConfirmDelete.showAndWait();
@@ -114,7 +106,7 @@ public class MenuProfesoresControlller implements Initializable {
 
       d = new Docente(teacherId, name, lastName, idNumber);
       if (DocenteService.eliminar(d)) {
-        Alert DeleteSuccess = generateAlert(Alert.AlertType.INFORMATION,
+        Alert DeleteSuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
             "Se borro al docente con extio. Fuiste advertido");
         cleanFields();
         DeleteSuccess.show();
@@ -155,8 +147,8 @@ public class MenuProfesoresControlller implements Initializable {
   private void cancelOperation(ActionEvent event) {
     New.setDisable(false);
     Cancel.setDisable(true);
-    Save.setDisable(true);
 
+    Save.setDisable(true);
     NameField.setDisable(true);
     LastNameField.setDisable(true);
     IDNumberField.setDisable(true);
@@ -178,7 +170,7 @@ public class MenuProfesoresControlller implements Initializable {
     String lastName = LastNameField.getText();
 
     if (name.isBlank() || lastName.isBlank() || IDNumberField.getText().isBlank()) {
-      Alert InvalidInput = generateAlert(Alert.AlertType.ERROR, "Los campos no pueden estar vacios");
+      Alert InvalidInput = AlertFactory.generateAlert(Alert.AlertType.ERROR, "Los campos no pueden estar vacios");
       InvalidInput.show();
     }
 
@@ -189,18 +181,22 @@ public class MenuProfesoresControlller implements Initializable {
       d.setIdDocente(Integer.parseInt(TeacherIDField.getText()));
 
       if (DocenteService.modificar(d)) {
-        Alert ModifySuccess = generateAlert(Alert.AlertType.INFORMATION, "Se modifico con exito los datos del docente");
+        Alert ModifySuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
+            "Se modifico con exito los datos del docente");
         ModifySuccess.show();
       } else {
-        Alert ModifyFailure = generateAlert(Alert.AlertType.ERROR, "Ocurrio un error al modificar los datos");
+        Alert ModifyFailure = AlertFactory.generateAlert(Alert.AlertType.ERROR,
+            "Ocurrio un error al modificar los datos");
         ModifyFailure.show();
       }
     } else {
       if (DocenteService.insertar(d)) {
-        Alert InsertSuccess = generateAlert(Alert.AlertType.INFORMATION, "Se inserto al docente con exito");
+        Alert InsertSuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
+            "Se inserto al docente con exito");
         InsertSuccess.show();
       } else {
-        Alert ModifyFailure = generateAlert(Alert.AlertType.ERROR, "Ocurrio un error al insertar al docente");
+        Alert ModifyFailure = AlertFactory.generateAlert(Alert.AlertType.ERROR,
+            "Ocurrio un error al insertar al docente");
         ModifyFailure.show();
       }
     }
