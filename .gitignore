@@ -29,3 +29,6 @@ kls_database.db
 
 # Te voy a pasar el archivo, tenes que pegar en la carpeta root (donde esta este archivo) del proyecto
 db.properties
+
+# Script que uso para compilar el proyecto en mi terminal (No es necesario para VSCode, IntelliJ ni Netbeans)
+run-ABM.sh
