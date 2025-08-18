@@ -26,7 +26,7 @@ public class DocenteDAO {
             return true;
 
         } catch (SQLException ex) {
-            Logger.getLogger(Docente.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("Hubo un error al insertar el docente: " + ex.getMessage());
             return false;
         }
     }
@@ -45,7 +45,7 @@ public class DocenteDAO {
 
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(Docente.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("Hubo un error al eliminar al docente" + ex.getMessage());
             return false;
         }
     }
@@ -57,8 +57,8 @@ public class DocenteDAO {
             pstmt.setInt(1, d.getIdDocente());
             pstmt.executeUpdate();
             return true;
-        } catch (SQLException e) {
-            System.err.println("Hubo un error al eliminar al docente" + e.getMessage());
+        } catch (SQLException ex) {
+            System.err.println("Hubo un error al eliminar al docente" + ex.getMessage());
             return false;
         }
     }
