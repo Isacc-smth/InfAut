@@ -55,7 +55,7 @@ public class MenuAulasController implements Initializable {
     }
 
     public void updateTable() {
-        roomsList = FXCollections.observableArrayList(AulaService.consulta());
+        roomsList = FXCollections.observableArrayList(AulaDAO.consulta());
 
         idColumn.setCellValueFactory(new PropertyValueFactory<>("idAula"));
         descColumn.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
@@ -74,7 +74,7 @@ public class MenuAulasController implements Initializable {
         Aula roomToDelete = new Aula(idAula, desc);
 
         if (opt.get() == ButtonType.OK) {
-            if (AulaService.eliminar(roomToDelete)) {
+            if (AulaDAO.eliminar(roomToDelete)) {
                 Alert deleteSuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
                         "Se elimino el aula con exito. Fuiste advertido");
 
@@ -136,7 +136,7 @@ public class MenuAulasController implements Initializable {
     }
 
     private void insert(Aula a) {
-        if (!AulaService.insertar(a)) {
+        if (!AulaDAO.insertar(a)) {
             Alert insertFailed = AlertFactory.generateAlert(Alert.AlertType.ERROR, "No se pudo insertar el aula"
                     + "verifique la entrada");
             insertFailed.show();
@@ -148,7 +148,7 @@ public class MenuAulasController implements Initializable {
     }
 
     private void update(Aula a) {
-        if (!AulaService.modificar(a)) {
+        if (!AulaDAO.modificar(a)) {
             Alert modFailed = AlertFactory.generateAlert(Alert.AlertType.ERROR, "No se puedo modificar el aula");
             modFailed.show();
         } else {

@@ -25,6 +25,8 @@ replay_pid*
 
 # Makefile kachi'ai que uso para compilar rapido (los dos)
 Makefile
+
+# Base de datos que usaba el Android Studio para los test (JUnit)
 kls_database.db
 
 # Te voy a pasar el archivo, tenes que pegar en la carpeta root (donde esta este archivo) del proyecto
