@@ -23,7 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-public class MenuProfesoresControlller implements Initializable {
+public class MenuProfesoresController implements Initializable {
 
     Docente d = new Docente();
 
@@ -70,7 +70,7 @@ public class MenuProfesoresControlller implements Initializable {
     }
 
     private void updateTable() throws SQLException {
-        rows = FXCollections.observableArrayList(DocenteService.consulta());
+        rows = FXCollections.observableArrayList(DocenteDAO.consulta());
 
         idDocente.setCellValueFactory(new PropertyValueFactory<>("idDocente"));
         Nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
@@ -105,7 +105,7 @@ public class MenuProfesoresControlller implements Initializable {
             int teacherId = Integer.parseInt(TeacherIDField.getText());
 
             d = new Docente(teacherId, name, lastName, idNumber);
-            if (DocenteService.eliminar(d)) {
+            if (DocenteDAO.eliminar(d)) {
                 Alert DeleteSuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
                         "Se borro al docente con extio. Fuiste advertido");
                 cleanFields();
@@ -180,7 +180,7 @@ public class MenuProfesoresControlller implements Initializable {
         if (this.isUpdatingRow) {
             d.setIdDocente(Integer.parseInt(TeacherIDField.getText()));
 
-            if (DocenteService.modificar(d)) {
+            if (DocenteDAO.modificar(d)) {
                 Alert ModifySuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
                         "Se modifico con exito los datos del docente");
                 ModifySuccess.show();
@@ -190,7 +190,7 @@ public class MenuProfesoresControlller implements Initializable {
                 ModifyFailure.show();
             }
         } else {
-            if (DocenteService.insertar(d)) {
+            if (DocenteDAO.insertar(d)) {
                 Alert InsertSuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
                         "Se inserto al docente con exito");
                 InsertSuccess.show();
