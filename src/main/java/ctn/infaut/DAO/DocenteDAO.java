@@ -3,9 +3,6 @@ package ctn.infaut.DAO;
 import ctn.infaut.connection.Conexion;
 import ctn.infaut.controllers.Docente;
 
-import java.util.logging.Logger;
-import java.util.logging.Level;
-
 import java.util.ArrayList;
 
 import java.sql.PreparedStatement;

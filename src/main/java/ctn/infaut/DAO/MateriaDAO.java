@@ -37,11 +37,11 @@ public class MateriaDAO {
             pstmt.setInt(1, m.getIdAula());
 
             pstmt.executeUpdate();
+            return true;
         } catch (SQLException e) {
             System.err.println("Hubo un error al eliminar la materia: " + e.getMessage());
             return false;
         }
-        return true;
     }
 
     // NOTE: El formato de la hora se debe validar antes de llamar a este método
