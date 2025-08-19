@@ -35,6 +35,14 @@ public class Materia {
         this.idAula = id;
     }
 
+    public void getHoraInicio(String hora) {
+        this.horaInicio = hora;
+    }
+
+    public void getHoraFin(String hora) {
+        this.horaFin = hora;
+    }
+
     public Materia() {
     }
 
