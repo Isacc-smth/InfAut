@@ -1,13 +1,9 @@
 package ctn.infaut;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 import ctn.infaut.controllers.Aula;
-import ctn.infaut.AlertFactory;
 import ctn.infaut.DAO.AulaDAO;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -29,6 +25,7 @@ public class MenuAulasController implements Initializable {
 
     ObservableList<Aula> roomsList;
     static boolean isMod = false;
+    AulaDAO AulaSQL;
 
     @FXML
     private TableView<Aula> RoomsTable;
@@ -51,11 +48,18 @@ public class MenuAulasController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        updateTable();
+        try {
+            AulaSQL = new AulaDAO();
+            updateTable();
+        } catch (SQLException e) {
+            Alert initialQueryFailure = AlertFactory.generateAlert(Alert.AlertType.ERROR,
+                    "Hubo un error al obtener las aulas" + e.getMessage());
+            initialQueryFailure.show();
+        }
     }
 
-    public void updateTable() {
-        roomsList = FXCollections.observableArrayList(AulaDAO.consulta());
+    public void updateTable() throws SQLException {
+        roomsList = FXCollections.observableArrayList(AulaSQL.consulta());
 
         idColumn.setCellValueFactory(new PropertyValueFactory<>("idAula"));
         descColumn.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
@@ -63,7 +67,7 @@ public class MenuAulasController implements Initializable {
     }
 
     @FXML
-    private void deleteRoom(ActionEvent event) {
+    private void deleteRoom(ActionEvent event) throws SQLException {
         Alert confirmRemoveAlert = AlertFactory.generateAlert(
                 Alert.AlertType.CONFIRMATION,
                 "Seguro que desea eliminar el aula. ESTA ACCION NO SE PUEDE REVERTIR!!");
@@ -74,7 +78,7 @@ public class MenuAulasController implements Initializable {
         Aula roomToDelete = new Aula(idAula, desc);
 
         if (opt.get() == ButtonType.OK) {
-            if (AulaDAO.eliminar(roomToDelete)) {
+            if (AulaSQL.eliminar(roomToDelete)) {
                 Alert deleteSuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
                         "Se elimino el aula con exito. Fuiste advertido");
 
@@ -119,7 +123,7 @@ public class MenuAulasController implements Initializable {
     }
 
     @FXML
-    private void saveChanges(ActionEvent event) {
+    private void saveChanges(ActionEvent event) throws SQLException {
         String desc = Description.getText();
 
         if (isMod) {
@@ -135,8 +139,8 @@ public class MenuAulasController implements Initializable {
         updateTable();
     }
 
-    private void insert(Aula a) {
-        if (!AulaDAO.insertar(a)) {
+    private void insert(Aula a) throws SQLException {
+        if (!AulaSQL.insertar(a)) {
             Alert insertFailed = AlertFactory.generateAlert(Alert.AlertType.ERROR, "No se pudo insertar el aula"
                     + "verifique la entrada");
             insertFailed.show();
@@ -147,8 +151,8 @@ public class MenuAulasController implements Initializable {
         }
     }
 
-    private void update(Aula a) {
-        if (!AulaDAO.modificar(a)) {
+    private void update(Aula a) throws SQLException {
+        if (!AulaSQL.modificar(a)) {
             Alert modFailed = AlertFactory.generateAlert(Alert.AlertType.ERROR, "No se puedo modificar el aula");
             modFailed.show();
         } else {

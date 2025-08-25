@@ -46,18 +46,49 @@ public class Materia {
     public Materia() {
     }
 
-    public Materia(Integer im, String n, String hi, String hf) {
-        this.idMateria = im;
+    public Materia(String n, String hi, String hf, Integer ia) {
+        if (!isValidTime(hi) || !isValidTime(hf)) {
+            throw new IllegalArgumentException("Formato de la hora incorrecto, use el formato HH:MI o HH:MI:SS");
+        }
+
         this.nombre = n;
         this.horaInicio = hi;
         this.horaFin = hf;
+        this.idAula = ia;
     }
 
     public Materia(Integer im, String n, String hi, String hf, Integer ia) {
+        if (!isValidTime(hi) || !isValidTime(hf)) {
+            throw new IllegalArgumentException("Formato de la hora incorrecto, use el formato HH:MI o HH:MI:SS");
+        }
+
         this.idMateria = im;
         this.nombre = n;
         this.horaInicio = hi;
         this.horaFin = hf;
         this.idAula = ia;
+    }
+
+    private boolean isValidTime(String time) throws NumberFormatException {
+        String[] tokens = time.replace(" ", "").split(":");
+
+        if (tokens.length != 2 || !time.contains(":")) {
+            System.err.println("Cantidad de tokens no es 2");
+            return false;
+        }
+
+        Integer hours = Integer.parseInt(tokens[0]);
+        if (hours < 0 || hours >= 24) {
+            System.err.println("La hora no es un número válido");
+            return false;
+        }
+
+        Integer minutes = Integer.parseInt(tokens[1]);
+        if (minutes < 0 || minutes >= 60) {
+            System.err.println("Los minutos no son un número válido");
+            return false;
+        }
+
+        return true;
     }
 }

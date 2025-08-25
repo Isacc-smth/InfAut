@@ -14,16 +14,17 @@
                 <Pane layoutX="38.0" layoutY="63.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: brown;">
                     <children>
                         <Label layoutX="45.0" layoutY="14.0" text="Menu de Materias" textFill="#c3c3c3" />
-                        <TextField disable="true" layoutX="20.0" layoutY="42.0" promptText="Nombre" />
-                  <TextField disable="true" layoutX="18.0" layoutY="82.0" promptText="Hora de Inicio" />
-                  <TextField disable="true" layoutX="20.0" layoutY="118.0" promptText="Hora de Culminacion" />
-                  <TextField disable="true" layoutX="20.0" layoutY="154.0" promptText="Numero de sala" />
+                        <TextField fx:id="NumMateria" disable="true" layoutX="20.0" layoutY="22.0" promptText="Numero de Materia" />
+                        <TextField fx:id="Nombre" disable="true" layoutX="20.0" layoutY="42.0" promptText="Nombre" />
+                        <TextField fx:id="HoraInicio" disable="true" layoutX="18.0" layoutY="82.0" promptText="Hora de Inicio" />
+                        <TextField fx:id="HoraFin" disable="true" layoutX="20.0" layoutY="118.0" promptText="Hora de Culminacion" />
+                        <TextField fx:id="NumSala" disable="true" layoutX="20.0" layoutY="154.0" promptText="Numero de sala" />
                     </children>
                 </Pane>
-                <Button fx:id="newEntry" layoutX="21.0" layoutY="289.0" mnemonicParsing="false" text="Nuevo" />
-                <Button fx:id="saveChanges" disable="true" layoutX="99.0" layoutY="289.0" mnemonicParsing="false" text="Guardar" />
-                <Button fx:id="cancel" disable="true" layoutX="100.0" layoutY="328.0" mnemonicParsing="false" text="Cancelar" />
-                <Button fx:id="deleteEntry" disable="true" layoutX="184.0" layoutY="289.0" mnemonicParsing="false" text="Borrar" />
+                <Button fx:id="New" layoutX="21.0" layoutY="289.0" mnemonicParsing="false" text="Nuevo" onAction="#newEntry"/>
+                <Button fx:id="Save" disable="true" layoutX="99.0" layoutY="289.0" mnemonicParsing="false" text="Guardar" onAction="#saveChanges" />
+                <Button fx:id="Cancel" disable="true" layoutX="100.0" layoutY="328.0" mnemonicParsing="false" text="Cancelar" onAction="#cancel" />
+                <Button fx:id="Delete" disable="true" layoutX="184.0" layoutY="289.0" mnemonicParsing="false" text="Borrar" onAction="delete"/>
             </children>
         </Pane>
         <TableView layoutX="300.0" layoutY="18.0" onMouseClicked="#completeFields" prefHeight="360.0" prefWidth="293.0">

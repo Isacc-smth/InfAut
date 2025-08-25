@@ -2,7 +2,6 @@ package ctn.infaut;
 
 import ctn.infaut.controllers.Docente;
 import ctn.infaut.DAO.DocenteDAO;
-import ctn.infaut.AlertFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -26,6 +25,7 @@ import javafx.scene.input.MouseEvent;
 public class MenuProfesoresController implements Initializable {
 
     Docente d = new Docente();
+    DocenteDAO DocenteSQL;
 
     boolean isUpdatingRow = false;
 
@@ -61,6 +61,7 @@ public class MenuProfesoresController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            DocenteSQL = new DocenteDAO();
             updateTable();
         } catch (SQLException e) {
             Alert TableRetrieveFailure = AlertFactory.generateAlert(Alert.AlertType.ERROR,
@@ -70,7 +71,7 @@ public class MenuProfesoresController implements Initializable {
     }
 
     private void updateTable() throws SQLException {
-        rows = FXCollections.observableArrayList(DocenteDAO.consulta());
+        rows = FXCollections.observableArrayList(DocenteSQL.consulta());
 
         idDocente.setCellValueFactory(new PropertyValueFactory<>("idDocente"));
         Nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
@@ -105,7 +106,7 @@ public class MenuProfesoresController implements Initializable {
             int teacherId = Integer.parseInt(TeacherIDField.getText());
 
             d = new Docente(teacherId, name, lastName, idNumber);
-            if (DocenteDAO.eliminar(d)) {
+            if (DocenteSQL.eliminar(d)) {
                 Alert DeleteSuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
                         "Se borro al docente con extio. Fuiste advertido");
                 cleanFields();
@@ -180,7 +181,7 @@ public class MenuProfesoresController implements Initializable {
         if (this.isUpdatingRow) {
             d.setIdDocente(Integer.parseInt(TeacherIDField.getText()));
 
-            if (DocenteDAO.modificar(d)) {
+            if (DocenteSQL.modificar(d)) {
                 Alert ModifySuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
                         "Se modifico con exito los datos del docente");
                 ModifySuccess.show();
@@ -190,7 +191,7 @@ public class MenuProfesoresController implements Initializable {
                 ModifyFailure.show();
             }
         } else {
-            if (DocenteDAO.insertar(d)) {
+            if (DocenteSQL.insertar(d)) {
                 Alert InsertSuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
                         "Se inserto al docente con exito");
                 InsertSuccess.show();

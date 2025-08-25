@@ -11,9 +11,15 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class DocenteDAO {
-    public static boolean insertar(Docente d) {
+    Conexion con;
+
+    public DocenteDAO() throws SQLException {
+        con = new Conexion();
+    }
+
+    public boolean insertar(Docente d) {
         String sql = "INSERT INTO infaut.docente (nombre, apellido, ci) VALUES (?, ?, ?)";
-        try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
+        try (PreparedStatement pstmt = con.getCon().prepareStatement(sql)) {
             pstmt.setString(1, d.getNombre());
             pstmt.setString(2, d.getApellido());
             pstmt.setInt(3, d.getCI());
@@ -28,10 +34,10 @@ public class DocenteDAO {
         }
     }
 
-    public static boolean modificar(Docente d) {
+    public boolean modificar(Docente d) {
         String sql = "UPDATE infaut.docente SET nombre = ?, apellido = ?, ci = ? WHERE id_docente = ?";
 
-        try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
+        try (PreparedStatement pstmt = con.getCon().prepareStatement(sql)) {
 
             pstmt.setString(1, d.getNombre());
             pstmt.setString(2, d.getApellido());
@@ -47,10 +53,10 @@ public class DocenteDAO {
         }
     }
 
-    public static boolean eliminar(Docente d) {
+    public boolean eliminar(Docente d) {
         String sql = "DELETE FROM infaut.docente WHERE id_docente=?";
 
-        try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
+        try (PreparedStatement pstmt = con.getCon().prepareStatement(sql)) {
             pstmt.setInt(1, d.getIdDocente());
             pstmt.executeUpdate();
             return true;
@@ -60,9 +66,9 @@ public class DocenteDAO {
         }
     }
 
-    public static ArrayList<Docente> consulta() throws SQLException {
+    public ArrayList<Docente> consulta() throws SQLException {
         ArrayList<Docente> teachers = new ArrayList<Docente>();
-        try (Statement stmt = Conexion.getCon().createStatement()) {
+        try (Statement stmt = con.getCon().createStatement()) {
             String sql = "SELECT * FROM infaut.docente WHERE 1=1";
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -74,11 +80,11 @@ public class DocenteDAO {
                                 rs.getString("apellido"),
                                 rs.getInt("ci")));
             }
+            return teachers;
         } catch (SQLException e) {
             System.err.println("Hubo un error al obtener los docentes: " + e.getMessage());
             return null;
         }
 
-        return teachers;
     }
 }
