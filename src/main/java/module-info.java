@@ -4,7 +4,7 @@ module ctn.infaut {
     requires java.base;
     requires java.sql;
 
-    opens ctn.infaut to javafx.fxml;
+    opens ctn.infaut.fxml to javafx.fxml;
     opens ctn.infaut.controllers to javafx.base;
 
     exports ctn.infaut;
