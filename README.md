@@ -24,7 +24,7 @@ un proyecto expuesto en la Expotecnia 2025
 
 ##### App android (en caso de querer compilar el apk)
 
-- Kotlin, como para el SDK de Android versino 24 o superior
+- Kotlin, como para el SDK de Android versión 24 o superior
 - La APK funciona hasta java 11
 
 ##### Arduino (sin terminar)
