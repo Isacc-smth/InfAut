@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class AulaDAO {
-    Conexion con;
+    private Conexion con;
 
     public AulaDAO() throws SQLException {
         con = new Conexion();

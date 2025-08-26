@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class DocenteDAO {
-    Conexion con;
+    private Conexion con;
 
     public DocenteDAO() throws SQLException {
         con = new Conexion();

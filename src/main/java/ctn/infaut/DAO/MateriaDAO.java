@@ -11,7 +11,7 @@ import ctn.infaut.controllers.Materia;
 
 public class MateriaDAO {
 
-    Conexion con;
+    private Conexion con;
 
     public MateriaDAO() throws SQLException {
         this.con = new Conexion();
