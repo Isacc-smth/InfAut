@@ -1,7 +1,8 @@
-package ctn.infaut;
+package ctn.infaut.fxml;
 
 import ctn.infaut.controllers.Docente;
 import ctn.infaut.DAO.DocenteDAO;
+import ctn.infaut.AlertFactory;
 
 import java.net.URL;
 import java.sql.SQLException;

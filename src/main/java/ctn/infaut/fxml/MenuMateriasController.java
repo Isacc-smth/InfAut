@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package ctn.infaut;
+package ctn.infaut.fxml;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -13,6 +13,8 @@ import javafx.scene.control.TableView;
 
 import ctn.infaut.DAO.MateriaDAO;
 import ctn.infaut.controllers.Materia;
+import ctn.infaut.AlertFactory;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
