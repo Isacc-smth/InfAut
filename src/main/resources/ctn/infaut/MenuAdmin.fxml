@@ -22,7 +22,7 @@
         <Menu fx:id="TableSelectionMenu" mnemonicParsing="false" text="Tablas">
           <items>
             <MenuItem fx:id="TeacherItem" mnemonicParsing="false" onAction="#openTeacherMenu"
-              style="-fx-text-fill: w;" text="Docente" />
+              text="Docente" />
             <MenuItem fx:id="StuedentItem" mnemonicParsing="false" onAction="#openStudentMenu"
               text="Alumno" />
             <MenuItem fx:id="FingerprintItem" mnemonicParsing="false"
@@ -38,7 +38,7 @@
       </menus>
     </MenuBar>
     <Label layoutX="191.0" layoutY="62.0" prefHeight="86.0" prefWidth="243.0" text="¡Bienvenido!"
-      textAlignment="CENTER" textFill="WHITE">
+      textAlignment="CENTER">
       <font>
         <Font size="32.0" />
       </font>

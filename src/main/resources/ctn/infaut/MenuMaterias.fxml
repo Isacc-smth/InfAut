@@ -7,32 +7,32 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.MenuMateriasController">
     <children>
         <Pane layoutY="-8.0" prefHeight="408.0" prefWidth="284.0" style="-fx-background-color: gray;">
             <children>
-                <Pane layoutX="38.0" layoutY="63.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: brown;">
+                <Pane layoutX="38.0" layoutY="24.0" prefHeight="239.0" prefWidth="200.0" style="-fx-background-color: brown;">
                     <children>
                         <Label layoutX="45.0" layoutY="14.0" text="Menu de Materias" textFill="#c3c3c3" />
-                        <TextField fx:id="NumMateria" disable="true" layoutX="20.0" layoutY="22.0" promptText="Numero de Materia" />
-                        <TextField fx:id="Nombre" disable="true" layoutX="20.0" layoutY="42.0" promptText="Nombre" />
-                        <TextField fx:id="HoraInicio" disable="true" layoutX="18.0" layoutY="82.0" promptText="Hora de Inicio" />
-                        <TextField fx:id="HoraFin" disable="true" layoutX="20.0" layoutY="118.0" promptText="Hora de Culminacion" />
-                        <TextField fx:id="NumSala" disable="true" layoutX="20.0" layoutY="154.0" promptText="Numero de sala" />
+                        <TextField fx:id="NumMateria" disable="true" layoutX="20.0" layoutY="31.0" promptText="Numero de Materia" />
+                        <TextField fx:id="Nombre" disable="true" layoutX="19.0" layoutY="67.0" promptText="Nombre" />
+                        <TextField fx:id="HoraInicio" disable="true" layoutX="17.0" layoutY="107.0" promptText="Hora de Inicio" />
+                        <TextField fx:id="HoraFin" disable="true" layoutX="19.0" layoutY="143.0" promptText="Hora de Culminacion" />
+                        <TextField fx:id="NumSala" disable="true" layoutX="19.0" layoutY="179.0" promptText="Numero de sala" />
                     </children>
                 </Pane>
-                <Button fx:id="New" layoutX="21.0" layoutY="289.0" mnemonicParsing="false" text="Nuevo" onAction="#newEntry"/>
-                <Button fx:id="Save" disable="true" layoutX="99.0" layoutY="289.0" mnemonicParsing="false" text="Guardar" onAction="#saveChanges" />
-                <Button fx:id="Cancel" disable="true" layoutX="100.0" layoutY="328.0" mnemonicParsing="false" text="Cancelar" onAction="#cancel" />
-                <Button fx:id="Delete" disable="true" layoutX="184.0" layoutY="289.0" mnemonicParsing="false" text="Borrar" onAction="delete"/>
+                <Button fx:id="New" layoutX="21.0" layoutY="289.0" mnemonicParsing="false" onAction="#newEntry" text="Nuevo" />
+                <Button fx:id="Save" disable="true" layoutX="99.0" layoutY="289.0" mnemonicParsing="false" onAction="#saveChanges" text="Guardar" />
+                <Button fx:id="Cancel" disable="true" layoutX="100.0" layoutY="328.0" mnemonicParsing="false" onAction="#cancel" text="Cancelar" />
+                <Button fx:id="Delete" disable="true" layoutX="184.0" layoutY="289.0" mnemonicParsing="false" onAction="#delete" text="Borrar" />
             </children>
         </Pane>
-        <TableView layoutX="300.0" layoutY="18.0" onMouseClicked="#completeFields" prefHeight="360.0" prefWidth="293.0">
+        <TableView fx:id="ClassesTable" layoutX="300.0" layoutY="18.0" onMouseClicked="#completeFields" prefHeight="360.0" prefWidth="293.0">
             <columns>
-                <TableColumn prefWidth="75.0" text="Nombre" />
-                <TableColumn prefWidth="75.0" text="Inicio" />
-                <TableColumn prefWidth="75.0" text="Fin" />
-            <TableColumn prefWidth="75.0" text="Sala" />
+                <TableColumn fx:id="ColumnNombre" prefWidth="75.0" text="Nombre" />
+                <TableColumn fx:id="ColumnHoraInicio" prefWidth="75.0" text="Inicio" />
+                <TableColumn fx:id="ColumnHoraFin" prefWidth="75.0" text="Fin" />
+            <TableColumn fx:id="ColumnSala" prefWidth="75.0" text="Sala" />
             </columns>
         </TableView>
     </children>

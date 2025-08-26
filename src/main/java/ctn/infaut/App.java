@@ -1,5 +1,3 @@
-// Nop, no uso javadoc (por ahora)
-
 package ctn.infaut;
 
 import javafx.application.Application;
