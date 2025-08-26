@@ -1,4 +1,4 @@
-package ctn.infaut.fxml;
+package ctn.infaut;
 
 import ctn.infaut.controllers.Aula;
 import ctn.infaut.DAO.AulaDAO;

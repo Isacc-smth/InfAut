@@ -22,11 +22,6 @@ un proyecto expuesto en la Expotecnia 2025
 - Maven 3.8 o superior
 - JAvaFX para la interfaz grafica del programa de administrador.
 
-##### App android (en caso de querer compilar el apk)
-
-- Kotlin, como para el SDK de Android versión 24 o superior
-- La APK funciona hasta java 11
-
 ##### Arduino (sin terminar)
 
 - La CLI o IDE de Arduino para compilar su respectivo codigo.
@@ -49,26 +44,4 @@ o alternativamente podes ejecutar
 
 ```sh
 mvn exec:java -Dexec.mainClass="ctn.infaut.App" # Ejecutar mediante maven
-```
-
-##### Parte Android
-
-La forma más sencilla de instalar es mediante la seccion de
-[Releases](https://github.com/Isacc-smth/InfAut/releases) (pendiente)
-
-##### Compilar el apk
-
-En la carpeta root del proyecto (donde esta este archivo), ejecutar:
-
-```sh
-# En linux/Mac
-./gradlew build
-# En Windows
-.\gradlew.bat build
-```
-
-Una vez finalize la compilacion, el APK esta en
-
-```sh
-./android/app/build/outputs/apk/debug/
 ```
