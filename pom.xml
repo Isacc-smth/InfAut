@@ -45,6 +45,12 @@
       <artifactId>postgresql</artifactId>
       <version>42.7.7</version>
     </dependency>
+    <!--SourceAFIS, para las operaciones con las huellas-->
+    <dependency>
+        <groupId>com.machinezoo.sourceafis</groupId>
+        <artifactId>sourceafis</artifactId>
+        <version>3.18.1</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

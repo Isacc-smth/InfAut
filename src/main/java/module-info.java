@@ -3,6 +3,7 @@ module ctn.infaut {
     requires javafx.fxml;
     requires java.base;
     requires java.sql;
+    requires com.machinezoo.sourceafis;
 
     opens ctn.infaut to javafx.fxml;
     opens ctn.infaut.controllers to javafx.base;
