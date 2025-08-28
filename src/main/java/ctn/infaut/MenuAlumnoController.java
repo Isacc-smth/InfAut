@@ -32,6 +32,7 @@ import java.util.ResourceBundle;
 public class MenuAlumnoController implements Initializable {
     @FXML
     private TableView<Alumno> StudentsTable;
+
     @FXML
     private TableColumn<Alumno, Integer> ColumnId;
     @FXML
@@ -41,6 +42,11 @@ public class MenuAlumnoController implements Initializable {
     @FXML
     private TableColumn<Alumno, Integer> ColumnCI;
     @FXML
+    private TableColumn<Alumno, Integer> ColumnIdCurso;
+    @FXML
+    private TableColumn<Alumno, String> ColumnCurso;
+
+    @FXML
     private TextField idAlumno;
     @FXML
     private TextField Nombre;
@@ -48,6 +54,10 @@ public class MenuAlumnoController implements Initializable {
     private TextField Apellido;
     @FXML
     private TextField CI;
+    @FXML
+    private TextField idCurso;
+    @FXML
+    private TextField Curso;
     @FXML
     private Button Nuevo;
     @FXML
@@ -105,17 +115,19 @@ public class MenuAlumnoController implements Initializable {
             String nombre = Nombre.getText();
             String apellido = Apellido.getText();
             Integer num_ci = Integer.parseInt(CI.getText());
+            Integer num_curso = Integer.parseInt(Curso.getText());
 
             Alumno al;
 
             if (isModifying) {
                 Integer id_alumno = Integer.parseInt(idAlumno.getText());
-                al = new Alumno(id_alumno, nombre, apellido, num_ci);
+                al = new Alumno(id_alumno, nombre, apellido, num_ci, num_curso);
             } else {
-                al = new Alumno(nombre, apellido, num_ci);
+                al = new Alumno(nombre, apellido, num_ci, num_curso);
             }
 
             return al;
+            // HDM POR FIN ME FUNCIONAN LOS INLAY HINTS LA PUTA QUE LO PARIOOOOO
         } catch (NumberFormatException e) {
             Alert modSuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
                     "Formato Incorrecto!!",
@@ -128,10 +140,6 @@ public class MenuAlumnoController implements Initializable {
 
     @FXML
     private void saveChanges(ActionEvent event) throws NumberFormatException {
-
-        // TODO: Validar la entrada para evitar cadenas vacias, si bien casi todas las
-        // filas estan como NOT NULL, igual es importante decirle al usuario que no
-        // puede ingresar X cosa
 
         Alumno al = getFromTextFields();
 

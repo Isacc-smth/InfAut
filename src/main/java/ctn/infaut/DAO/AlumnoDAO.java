@@ -18,11 +18,12 @@ public class AlumnoDAO {
     }
 
     public boolean insertar(Alumno al) {
-        String sql = "INSERT INTO infaut.alumno (nombre, apellido, ci) values (?,?,?)";
+        String sql = "INSERT INTO infaut.alumno (nombre, apellido, ci, id_curso) values (?,?,?,?)";
         try (PreparedStatement pstmt = con.getCon().prepareStatement(sql)) {
             pstmt.setString(1, al.getNombre());
             pstmt.setString(2, al.getApellido());
             pstmt.setInt(3, al.getCi());
+						pstmt.setInt(4, al.getIdCurso());
 
             pstmt.executeUpdate();
 
@@ -43,7 +44,9 @@ public class AlumnoDAO {
                         rs.getInt("id_alumno"),
                         rs.getString("nombre"),
                         rs.getString("apellido"),
-                        rs.getInt("ci"));
+                        rs.getInt("ci"),
+												rs.getInt("id_curso")
+								);
 
                 students.add(al);
             }

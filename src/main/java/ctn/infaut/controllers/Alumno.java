@@ -1,10 +1,20 @@
 package ctn.infaut.controllers;
 
 public class Alumno {
-    private Integer idAlumno;
     private String nombre;
     private String apellido;
+
+    private Integer idAlumno;
     private Integer ci;
+		private Integer idCurso;
+
+	public Integer getIdCurso() {
+		return this.idCurso;
+	}
+
+	public void setIdCurso(Integer id) {
+		this.idCurso = id;
+	}
 
     public String getNombre() {
         return this.nombre;
@@ -38,16 +48,18 @@ public class Alumno {
         this.apellido = a;
     }
 
-    public Alumno(Integer idAl, String n, String a, Integer ci) {
+    public Alumno(Integer idAl, String n, String a, Integer ci, Integer idCu) {
         this.idAlumno = idAl;
         this.nombre = n;
         this.apellido = a;
         this.ci = ci;
+        this.idCurso = idCu;
     }
 
-    public Alumno(String n, String a, Integer ci) {
+    public Alumno(String n, String a, Integer ci, Integer idCu) {
         this.nombre = n;
         this.apellido = a;
         this.ci = ci;
+        this.idCurso = idCu;
     }
 }
