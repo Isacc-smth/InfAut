@@ -13,7 +13,6 @@ import javafx.scene.control.TableView;
 
 import ctn.infaut.DAO.MateriaDAO;
 import ctn.infaut.controllers.Materia;
-import ctn.infaut.AlertFactory;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,7 +33,7 @@ import javafx.scene.input.MouseEvent;
  *
  * @author isaacfeltes
  */
-public class MenuMateriasController implements Initializable {
+public class MenuMateriaController implements Initializable {
     @FXML
     private Button New;
     @FXML
