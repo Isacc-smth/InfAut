@@ -2,7 +2,6 @@ package ctn.infaut;
 
 import ctn.infaut.controllers.Docente;
 import ctn.infaut.DAO.DocenteDAO;
-import ctn.infaut.AlertFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -101,12 +100,8 @@ public class MenuProfesoresController implements Initializable {
         Optional<ButtonType> optional = ConfirmDelete.showAndWait();
 
         if (optional.get() == ButtonType.OK) {
-            String name = NameField.getText();
-            String lastName = LastNameField.getText();
-            int idNumber = Integer.parseInt(IDNumberField.getText());
-            int teacherId = Integer.parseInt(TeacherIDField.getText());
 
-            d = new Docente(teacherId, name, lastName, idNumber);
+            Docente d = getFromTextFields();
             if (DocenteSQL.eliminar(d)) {
                 Alert DeleteSuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
                         "Se borro al docente con extio. Fuiste advertido");
@@ -204,5 +199,16 @@ public class MenuProfesoresController implements Initializable {
         }
         cleanFields();
         updateTable();
+    }
+
+    private Docente getFromTextFields() {
+        String name = NameField.getText();
+        String lastName = LastNameField.getText();
+        int idNumber = Integer.parseInt(IDNumberField.getText());
+        int teacherId = Integer.parseInt(TeacherIDField.getText());
+
+        Docente d = new Docente(teacherId, name, lastName, idNumber);
+
+        return d;
     }
 }
