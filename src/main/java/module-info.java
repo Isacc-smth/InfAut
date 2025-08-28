@@ -1,5 +1,5 @@
 module ctn.infaut {
-    requires javafx.controls;
+    requires transitive javafx.controls;
     requires javafx.fxml;
     requires java.base;
     requires java.sql;
