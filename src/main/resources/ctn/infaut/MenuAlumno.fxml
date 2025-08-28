@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -9,53 +10,42 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-    prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #631e1a;"
-    xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="ctn.infaut.MenuAlumnoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #631e1a;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.MenuAlumnoController">
     <children>
-        <Pane layoutY="176.0" prefHeight="324.0" prefWidth="600.0"
-            style="-fx-background-color: #290d0b;">
+        <Pane layoutY="176.0" prefHeight="324.0" prefWidth="800.0" style="-fx-background-color: #290d0b;">
             <children>
-                <TableView fx:id="StudentsTable" layoutX="32.0" layoutY="26.0"
-                    onMouseClicked="#completeFields" prefHeight="284.0" prefWidth="530.0">
+                <TableView fx:id="StudentsTable" layoutX="22.0" layoutY="20.0" onMouseClicked="#completeFields" prefHeight="284.0" prefWidth="766.0">
                     <columns>
                         <TableColumn fx:id="ColumnId" prefWidth="75.0" text="idAlumno" />
                         <TableColumn fx:id="ColumnNombre" prefWidth="157.0" text="Nombre" />
                         <TableColumn fx:id="ColumnApellido" prefWidth="178.0" text="Apellido" />
                         <TableColumn fx:id="ColumnCI" prefWidth="119.0" text="CI" />
+                        <TableColumn fx:id="ColumnIdCurso" prefWidth="119.0" text="idCurso" />
+                        <TableColumn fx:id="ColumnCurso" prefWidth="119.0" text="Curso" />
                     </columns>
                 </TableView>
             </children>
         </Pane>
-        <Pane prefHeight="176.0" prefWidth="463.0" style="-fx-background-color: #a33e39;">
+        <Pane prefHeight="176.0" prefWidth="667.0" style="-fx-background-color: #a33e39;">
             <children>
-                <TextField fx:id="idAlumno" disable="true" layoutX="379.0" layoutY="142.0"
-                    prefHeight="24.0" prefWidth="75.0" promptText="IdAlumno" />
-                <TextField fx:id="Nombre" disable="true" layoutX="61.0" layoutY="99.0"
-                    promptText="Nombre" />
-                <TextField fx:id="Apellido" disable="true" layoutX="257.0" layoutY="99.0"
-                    promptText="Apellido" />
-                <TextField fx:id="CI" disable="true" layoutX="175.0" layoutY="136.0"
-                    prefHeight="24.0" prefWidth="139.0" promptText="CI (sin puntos)" />
-                <Label layoutX="140.0" layoutY="31.0" text="Menu de Alumnos"
-                    textFill="WHITE">
+                <TextField fx:id="idAlumno" disable="true" layoutX="459.0" layoutY="32.0" prefHeight="24.0" prefWidth="75.0" promptText="IdAlumno" />
+                <TextField fx:id="Nombre" disable="true" layoutX="61.0" layoutY="99.0" promptText="Nombre" />
+                <TextField fx:id="Apellido" disable="true" layoutX="257.0" layoutY="99.0" promptText="Apellido" />
+                <TextField fx:id="CI" disable="true" layoutX="175.0" layoutY="136.0" prefHeight="24.0" prefWidth="139.0" promptText="CI (sin puntos)" />
+                <TextField fx:id="idCurso" disable="true" layoutX="550.0" layoutY="32.0" prefHeight="24.0" prefWidth="72.0" promptText="idCurso" />
+                <TextField fx:id="Curso" disable="true" layoutX="481.0" layoutY="64.0" prefHeight="24.0" prefWidth="139.0" promptText="Curso" />
+                <Label layoutX="140.0" layoutY="31.0" text="Menu de Alumnos" textFill="WHITE">
                     <font>
                         <Font size="22.0" />
                     </font>
                 </Label>
+            <Button fx:id="Nuevo1" layoutX="550.0" layoutY="138.0" mnemonicParsing="false" onAction="#newEntry" text="Buscar Curso" />
             </children>
         </Pane>
-        <Button fx:id="Nuevo" layoutX="499.0" layoutY="21.0" mnemonicParsing="false"
-            onAction="#newEntry" text="Nuevo" />
-        <Button fx:id="Guardar" layoutX="499.0" layoutY="56.0"
-            mnemonicParsing="false"
-            onAction="#saveChanges" disable="true" text="Guardar" />
-        <Button fx:id="Eliminar" disable="true" layoutX="499.0" layoutY="92.0"
-            mnemonicParsing="false"
-            onAction="#deleteEntry" text="Eliminar" />
-        <Button fx:id="Cancelar" disable="true" layoutX="499.0" layoutY="130.0"
-            mnemonicParsing="false"
-            onAction="#cancel" text="Cancelar" />
+        <Button fx:id="Nuevo" layoutX="696.0" layoutY="22.0" mnemonicParsing="false" onAction="#newEntry" text="Nuevo" />
+        <Button fx:id="Guardar" disable="true" layoutX="696.0" layoutY="57.0" mnemonicParsing="false" onAction="#saveChanges" text="Guardar" />
+        <Button fx:id="Eliminar" disable="true" layoutX="696.0" layoutY="93.0" mnemonicParsing="false" onAction="#deleteEntry" text="Eliminar" />
+        <Button fx:id="Cancelar" disable="true" layoutX="696.0" layoutY="131.0" mnemonicParsing="false" onAction="#cancel" text="Cancelar" />
+      <Separator layoutX="441.0" orientation="VERTICAL" prefHeight="176.0" prefWidth="6.0" />
     </children>
 </AnchorPane>

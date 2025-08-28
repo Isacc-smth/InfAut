@@ -23,7 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-public class MenuAulasController implements Initializable {
+public class MenuAulaController implements Initializable {
 
     ObservableList<Aula> roomsList;
     static boolean isMod = false;

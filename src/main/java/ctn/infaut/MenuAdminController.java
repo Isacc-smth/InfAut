@@ -91,7 +91,7 @@ public class MenuAdminController implements Initializable {
 
     @FXML
     private void openTeacherMenu(ActionEvent event) throws IOException {
-        openFXML("MenuProfesores.fxml", "Menu de Tabla Docentes", event);
+        openFXML("MenuProfesor.fxml", "Menu de Tabla Docentes", event);
     }
 
     @FXML
@@ -105,20 +105,16 @@ public class MenuAdminController implements Initializable {
 
     @FXML
     private void openAssignatureMenu(ActionEvent event) throws IOException {
-        openFXML("MenuMaterias.fxml", "Menu de Tabla Materias", event);
+        openFXML("MenuMateria.fxml", "Menu de Tabla Materias", event);
     }
 
     @FXML
     private void openCourseMenu(ActionEvent event) throws IOException {
-        openFXML("MenuAulas.fxml", "Menu de Tabla Cursos", event);
+        openFXML("MenuCurso.fxml", "Menu de Tabla Cursos", event);
     }
 
     @FXML
     private void openClassroomMenu(ActionEvent event) throws IOException {
-        openFXML("MenuAulas.fxml", "Menu de Tabla Aulas", event);
+        openFXML("MenuAula.fxml", "Menu de Tabla Aulas", event);
     }
-
-    // @FXML
-    // private void openDocs(ActionEvent event) {
-    // }
 }
