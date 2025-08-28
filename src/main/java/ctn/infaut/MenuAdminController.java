@@ -91,11 +91,12 @@ public class MenuAdminController implements Initializable {
 
     @FXML
     private void openTeacherMenu(ActionEvent event) throws IOException {
-        openFXML("MenuProfesores.fxml", "Menu de Tabla Profesores", event);
+        openFXML("MenuProfesores.fxml", "Menu de Tabla Docentes", event);
     }
 
     @FXML
     private void openStudentMenu(ActionEvent event) throws IOException {
+        openFXML("MenuAlumno.fxml", "Menu de Tabla Alumno", event);
     }
 
     @FXML
