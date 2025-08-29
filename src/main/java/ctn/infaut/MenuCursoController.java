@@ -2,8 +2,6 @@ package ctn.infaut;
 
 import ctn.infaut.controllers.Curso;
 import ctn.infaut.DAO.CursoDAO;
-import ctn.infaut.DAO.CursoDAO;
-import ctn.infaut.AlertFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -33,13 +31,13 @@ public class MenuCursoController implements Initializable {
     @FXML
     private TableView<Curso> RoomsTable;
     @FXML
-    private TableColumn<Curso, Integer> idColumn;
+    TableColumn<Curso, Integer> ColumnaIdCurso;
     @FXML
-    private TableColumn<Curso, String> descColumn;
+    private TableColumn<Curso, String> ColumnaDescripcion;
     @FXML
-    private TextField RoomId;
+    private TextField IdCurso;
     @FXML
-    private TextField Description;
+    private TextField Descripcion;
     @FXML
     private Button New;
     @FXML
@@ -64,8 +62,9 @@ public class MenuCursoController implements Initializable {
     public void updateTable() throws SQLException {
         roomsList = FXCollections.observableArrayList(CursoSQL.consulta());
 
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("idCurso"));
-        descColumn.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        ColumnaIdCurso.setCellValueFactory(new PropertyValueFactory<>("idCurso"));
+        ColumnaDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+
         RoomsTable.setItems(roomsList);
     }
 
@@ -76,8 +75,8 @@ public class MenuCursoController implements Initializable {
                 "Seguro que desea eliminar el curso. ESTA ACCION NO SE PUEDE REVERTIR!!");
         Optional<ButtonType> opt = confirmRemoveAlert.showAndWait();
 
-        Integer idCurso = Integer.parseInt(RoomId.getText());
-        String desc = Description.getText();
+        Integer idCurso = Integer.parseInt(IdCurso.getText());
+        String desc = Descripcion.getText();
         Curso roomToDelete = new Curso(idCurso, desc);
 
         if (opt.get() == ButtonType.OK) {
@@ -101,8 +100,8 @@ public class MenuCursoController implements Initializable {
         Curso selection = RoomsTable.getSelectionModel().getSelectedItem();
 
         if (selection != null) {
-            RoomId.setText(String.valueOf(selection.getIdCurso()));
-            Description.setText(selection.getDescripcion());
+            IdCurso.setText(String.valueOf(selection.getIdCurso()));
+            Descripcion.setText(selection.getDescripcion());
         }
 
         New.setDisable(true);
@@ -110,7 +109,7 @@ public class MenuCursoController implements Initializable {
         Delete.setDisable(false);
         Cancel.setDisable(false);
 
-        Description.setDisable(false);
+        Descripcion.setDisable(false);
 
         isMod = true;
     }
@@ -122,15 +121,15 @@ public class MenuCursoController implements Initializable {
         Delete.setDisable(false);
         Cancel.setDisable(false);
 
-        Description.setDisable(false);
+        Descripcion.setDisable(false);
     }
 
     @FXML
     private void saveChanges(ActionEvent event) throws SQLException {
-        String desc = Description.getText();
+        String desc = Descripcion.getText();
 
         if (isMod) {
-            Integer id = Integer.parseInt(RoomId.getText());
+            Integer id = Integer.parseInt(IdCurso.getText());
             Curso a = new Curso(id, desc);
             System.out.println("isMod es: " + isMod);
             update(a);
@@ -172,7 +171,7 @@ public class MenuCursoController implements Initializable {
         Delete.setDisable(true);
         Cancel.setDisable(true);
 
-        Description.setDisable(true);
+        Descripcion.setDisable(true);
         isMod = false;
     }
 }

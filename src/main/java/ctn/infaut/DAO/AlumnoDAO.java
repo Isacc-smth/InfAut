@@ -8,8 +8,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import ctn.infaut.controllers.Alumno;
+import ctn.infaut.DTO.AlumnoCursoDTO;
 import ctn.infaut.connection.Conexion;
 
+/**
+ * Clase para controlar consultas SQL solicitadas por el  menu de Alumnos
+ *
+ * @implNote El método #consulta retorna un {@link ctn.infaut.DTO.AlumnoCursoDTO}
+ *
+ * @see ctn.infaut.DTO.AlumnoCursoDTO
+ * @see ctn.infaut.MenuAlumnoController
+ *
+ * */
 public class AlumnoDAO {
     private Conexion con;
 
@@ -23,7 +33,7 @@ public class AlumnoDAO {
             pstmt.setString(1, al.getNombre());
             pstmt.setString(2, al.getApellido());
             pstmt.setInt(3, al.getCi());
-						pstmt.setInt(4, al.getIdCurso());
+            pstmt.setInt(4, al.getIdCurso());
 
             pstmt.executeUpdate();
 
@@ -34,20 +44,22 @@ public class AlumnoDAO {
         }
     }
 
-    public ArrayList<Alumno> consulta() {
-        String sql = "SELECT * FROM infaut.alumno WHERE 1=1";
+    public ArrayList<AlumnoCursoDTO> consulta() {
+        String sql = "SELECT id_alumno, nombre, apellido, ci, c.id_curso, descripcion " + 
+            "FROM infaut.alumno a INNER JOIN infaut.curso c ON a.id_curso = c.id_curso " + 
+            "WHERE 1=1";
         try (Statement stmt = con.getCon().createStatement()) {
-            ArrayList<Alumno> students = new ArrayList<>();
+            ArrayList<AlumnoCursoDTO> students = new ArrayList<>();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                Alumno al = new Alumno(
+                AlumnoCursoDTO al = new AlumnoCursoDTO(
                         rs.getInt("id_alumno"),
                         rs.getString("nombre"),
                         rs.getString("apellido"),
                         rs.getInt("ci"),
-												rs.getInt("id_curso")
-								);
-
+                        rs.getInt("id_curso"),
+                        rs.getString("descripcion")
+					);
                 students.add(al);
             }
             return students;
@@ -71,12 +83,16 @@ public class AlumnoDAO {
     }
 
     public boolean modificar(Alumno al) {
-        String sql = "UPDATE infaut.alumno SET nombre = ?, apellido = ?, ci = ? WHERE id_alumno = ?";
+        String sql = "UPDATE infaut.alumno SET" + 
+            " nombre = ?, apellido = ?, ci = ?, id_curso = ?" +
+            " WHERE id_alumno = ?";
+
         try (PreparedStatement pstmt = con.getCon().prepareStatement(sql)) {
             pstmt.setString(1, al.getNombre());
             pstmt.setString(2, al.getApellido());
             pstmt.setInt(3, al.getCi());
-            pstmt.setInt(4, al.getIdAlumno());
+            pstmt.setInt(4, al.getIdCurso());
+            pstmt.setInt(5, al.getIdAlumno());
 
             pstmt.executeUpdate();
             return true;

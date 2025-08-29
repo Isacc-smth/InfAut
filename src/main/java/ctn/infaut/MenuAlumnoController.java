@@ -1,24 +1,34 @@
 package ctn.infaut;
 
 import ctn.infaut.DAO.AlumnoDAO;
+import ctn.infaut.DTO.AlumnoCursoDTO;
 import ctn.infaut.controllers.Alumno;
+import ctn.infaut.controllers.CursoSingleton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.net.URL;
 import java.sql.SQLException;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -31,20 +41,20 @@ import java.util.ResourceBundle;
  */
 public class MenuAlumnoController implements Initializable {
     @FXML
-    private TableView<Alumno> StudentsTable;
+    private TableView<AlumnoCursoDTO> StudentsTable;
 
     @FXML
-    private TableColumn<Alumno, Integer> ColumnId;
+    private TableColumn<AlumnoCursoDTO, Integer> ColumnId;
     @FXML
-    private TableColumn<Alumno, String> ColumnNombre;
+    private TableColumn<AlumnoCursoDTO, String> ColumnNombre;
     @FXML
-    private TableColumn<Alumno, String> ColumnApellido;
+    private TableColumn<AlumnoCursoDTO, String> ColumnApellido;
     @FXML
-    private TableColumn<Alumno, Integer> ColumnCI;
+    private TableColumn<AlumnoCursoDTO, Integer> ColumnCI;
     @FXML
-    private TableColumn<Alumno, Integer> ColumnIdCurso;
+    private TableColumn<AlumnoCursoDTO, Integer> ColumnIdCurso;
     @FXML
-    private TableColumn<Alumno, String> ColumnCurso;
+    private TableColumn<AlumnoCursoDTO, String> ColumnCurso;
 
     @FXML
     private TextField idAlumno;
@@ -71,7 +81,7 @@ public class MenuAlumnoController implements Initializable {
 
     private boolean isModifying = false;
 
-    private ObservableList<Alumno> studentList;
+    private ObservableList<AlumnoCursoDTO> studentList;
 
     /**
      * 
@@ -92,12 +102,16 @@ public class MenuAlumnoController implements Initializable {
 
     @FXML
     private void completeFields(MouseEvent event) {
-        Alumno selection = StudentsTable.getSelectionModel().getSelectedItem();
+        AlumnoCursoDTO selection = StudentsTable.getSelectionModel().getSelectedItem();
         if (selection != null) {
             idAlumno.setText(String.valueOf(selection.getIdAlumno()));
             Nombre.setText(selection.getNombre());
             Apellido.setText(selection.getApellido());
             CI.setText(String.valueOf(selection.getCi()));
+
+            idCurso.setText(String.valueOf(selection.getIdCurso()));
+            Curso.setText(selection.getDescripcion());
+
             isModifying = true;
             prepareButtonsAndFields();
         }
@@ -115,7 +129,8 @@ public class MenuAlumnoController implements Initializable {
             String nombre = Nombre.getText();
             String apellido = Apellido.getText();
             Integer num_ci = Integer.parseInt(CI.getText());
-            Integer num_curso = Integer.parseInt(Curso.getText());
+            Integer num_curso = Integer.parseInt(idCurso.getText());
+
 
             Alumno al;
 
@@ -127,7 +142,6 @@ public class MenuAlumnoController implements Initializable {
             }
 
             return al;
-            // HDM POR FIN ME FUNCIONAN LOS INLAY HINTS LA PUTA QUE LO PARIOOOOO
         } catch (NumberFormatException e) {
             Alert modSuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
                     "Formato Incorrecto!!",
@@ -200,6 +214,9 @@ public class MenuAlumnoController implements Initializable {
         Apellido.setText("");
         CI.setText("");
 
+        idCurso.setText("");
+        Curso.setText("");
+
         Nuevo.setDisable(false);
         Guardar.setDisable(true);
         Eliminar.setDisable(true);
@@ -208,7 +225,33 @@ public class MenuAlumnoController implements Initializable {
         Nombre.setDisable(true);
         Apellido.setDisable(true);
         CI.setDisable(true);
+        idCurso.setDisable(true);
 
+    }
+
+    @FXML
+    private void abrirBuscadorCurso(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("BuscarCurso.fxml"));
+        try {
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+            stage.setTitle("Buscar Curso");
+
+            stage.showAndWait();
+
+            idCurso.setText(String.valueOf(CursoSingleton.getInstance().getIdCurso()));
+            Curso.setText(String.valueOf(CursoSingleton.getInstance().getDescripcion()));
+
+        } catch (IOException e) {
+            Alert aperturaFXMLFallo = AlertFactory.generateAlert(AlertType.ERROR,
+                    "CRITICO:",
+                    "No se pudo abir el buscador"
+                );
+            aperturaFXMLFallo.showAndWait();
+        }
     }
 
     private void updateTable() {
@@ -218,6 +261,8 @@ public class MenuAlumnoController implements Initializable {
         ColumnCI.setCellValueFactory(new PropertyValueFactory<>("ci"));
         ColumnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         ColumnApellido.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        ColumnIdCurso.setCellValueFactory(new PropertyValueFactory<>("idCurso"));
+        ColumnCurso.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
 
         StudentsTable.setItems(studentList);
     }
@@ -231,5 +276,7 @@ public class MenuAlumnoController implements Initializable {
         Nombre.setDisable(false);
         Apellido.setDisable(false);
         CI.setDisable(false);
+        idCurso.setDisable(false); // para que pueda cambiar la referencia del curso
+
     }
 }
