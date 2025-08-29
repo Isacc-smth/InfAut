@@ -3,11 +3,6 @@ target/
 .project
 .gradle/
 
-.kotlin
-
-# Carpeta donde se arma el apk (App de Android, lo mas probable es que solo puedas probar desde android studio)
-./android/build/
-
 # IntelliJ IDEA
 .idea/
 
@@ -15,22 +10,14 @@ target/
 .code-workspace/
 .vscode/
 
-# Este es por si estes trabajando con Netbeans
+# Netbeans
 nbactions.xml
 
 # Archivo comunmente usado por IDES y editores para determinar jerarquia de clases dentro del proyecto
-# .classpath
-hs_err_pid*
-replay_pid*
+.classpath
 
-# Makefile kachi'ai que uso para compilar rapido (los dos)
-Makefile
-
-# Base de datos que usaba el Android Studio para los test (JUnit)
-kls_database.db
-
-# Te voy a pasar el archivo, tenes que pegar en la carpeta root (donde esta este archivo) del proyecto
+# Archivo que va a utlizar para obtener las credenciales de la base de datos
 db.properties
 
-# Script que uso para compilar el proyecto en mi terminal (No es necesario para VSCode, IntelliJ ni Netbeans)
+# Script personal para compilar el programa mas rapido
 run-ABM.sh
