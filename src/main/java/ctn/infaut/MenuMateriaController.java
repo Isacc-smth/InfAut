@@ -34,7 +34,7 @@ import javafx.scene.input.MouseEvent;
  *
  * @author isaacfeltes
  */
-public class MenuMateriasController implements Initializable {
+public class MenuMateriaController implements Initializable {
     @FXML
     private Button New;
     @FXML

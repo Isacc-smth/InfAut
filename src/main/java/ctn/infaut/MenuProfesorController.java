@@ -22,7 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-public class MenuProfesoresController implements Initializable {
+public class MenuProfesorController implements Initializable {
 
     Docente d = new Docente();
     DocenteDAO DocenteSQL;
