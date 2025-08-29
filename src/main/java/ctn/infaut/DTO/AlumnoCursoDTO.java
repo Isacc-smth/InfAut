@@ -57,5 +57,13 @@ public class AlumnoCursoDTO {
         this.descripcion = descripcion;
     }
 
+    public AlumnoCursoDTO(Integer idAlumno, String nombre, String apellido, Integer ci, Integer idCurso) {
+        this.idAlumno = idAlumno;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.ci = ci;
+
+        this.idCurso = idCurso;
+    }
 
 }
