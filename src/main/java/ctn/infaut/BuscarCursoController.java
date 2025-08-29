@@ -72,7 +72,7 @@ public class BuscarCursoController implements Initializable {
      * Obtiene el curso seleccionado y lo asigna a
      * {@link ctn.infaut.Controllers.CursoSingleton}
      *
-     * @param event representa informacion util de acciones realizadas con el raton.
+     * @param event representa informacion util de acciones realizadas con el raton como verificar si fue doble click
      * */
 	@FXML
 	private void completarEnSingleton(MouseEvent event) {

@@ -2,7 +2,6 @@ package ctn.infaut;
 
 import ctn.infaut.controllers.Aula;
 import ctn.infaut.DAO.AulaDAO;
-import ctn.infaut.AlertFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -96,7 +95,7 @@ public class MenuAulaController implements Initializable {
     }
 
     @FXML
-    private void completeField(MouseEvent event) {
+    private void completarCampos(MouseEvent event) {
         Aula selection = RoomsTable.getSelectionModel().getSelectedItem();
 
         if (selection != null) {
