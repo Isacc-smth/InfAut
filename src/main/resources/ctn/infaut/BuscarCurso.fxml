@@ -13,6 +13,5 @@
           <TableColumn fx:id="ColumnaCurso" prefWidth="226.0" text="Curso" />
         </columns>
       </TableView>
-      <TextField layoutX="130.0" layoutY="37.0" prefHeight="24.0" prefWidth="225.0" promptText="🔍 Ingrese el Curso" />
    </children>
 </AnchorPane>
