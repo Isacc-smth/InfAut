@@ -11,7 +11,7 @@ en otras instituciones del pais.
 - Finalizar el vinculo entre entidades 'vairos a varios'. 
 - Implementar la autenticacion por huella.
 - Dar instrucciones y sugerencias de como hacerlo.
-- Limpiar el codigo y documentar via JavaDoc
+- Limpiar el codigo y documentar via JavaDoc. Notara que gradualmente lo estoy haciendo
 
 ### Funcionalidades
 
@@ -34,28 +34,47 @@ en otras instituciones del pais.
 
 - Java 21 y superior para la ejecucion del proyecto.
 - Maven 4.0 o superior
-- PostgreSQL. Si desea usar otro motor SQL, debera hacer cambios en el script.
+- PostgreSQL. Si desea usar otro motor SQL como MySQL, debera adaptar el script.
 
-#### Como armar el proyecto
+#### Armar el proyecto
 
 > [!CAUTION]
-> NO es necesario seguir estos pasos si estas trabajando desde un IDE, vscode.
+> NO es necesario seguir estos pasos si esta trabajando desde un IDE, vscode
+> u otro editor que automatice el compilado y ejecucion.
 > Solo siga estos pasos si realmente necesita ejecutar desde una terminal/cmd
-
-##### Parte Java
 
 ```sh
 mvn clean-package # Compilar el proyecto en un jar
 ```
 
-podes abrir el jar con:
+puede abrir el jar con:
 
 ```sh
 java - jar ./target/Infaut-1.0-SNAPSHOT.jar
 ```
 
-o alternativamente podes ejecutar
+o alternativamente puede ejecutar
 
 ```sh
 mvn exec:java -Dexec.mainClass="ctn.infaut.App" # Ejecutar mediante maven
 ```
+
+#### Replicar la base de datos y proporcionarla al proyecto
+
+1. Utlice el [script SQL](crear_DB.sql)
+2. Cree un archivo `db.properties`
+3. Especifique las credenciales con el siguiente formato.
+```sh
+   url=jdbc:postgresql://[host]:[puerto, por defecto es 5432]/[nombre de la DB] 
+```
+4. Quizá tenga que agregar:
+```sh
+    db.user={usuario}
+    db.password={contraseña}
+```
+5. Posteriormente, agregar en la clase [Conexion](src/main/java/ctn/infaut/connection/Conexion.java)
+```java
+    String user = props.getProperty("db.user");
+    String password = props.getProperty("db.password");
+```
+6. Se recomienda implemantar Pooling para optimizar las transacciones. Yo no lo he hecho   porque el DBaaS ya lo tiene.

@@ -15,6 +15,9 @@ public class Conexion {
         try (FileInputStream db = new FileInputStream("db.properties")) {
             props.load(db);
             String url = props.getProperty("db.url");
+            // Quite los comentarios si desea usar
+            // String user = props.getProperty("db.user");
+            // String password = props.getProperty("db.password");
 
             con = DriverManager.getConnection(url);
             System.out.println("Se conectó con éxito a la base de datos, YIPEEE!");
