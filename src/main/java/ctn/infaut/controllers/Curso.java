@@ -13,28 +13,16 @@ public class Curso {
 	private Integer idCurso;
 	private String descripcion;
 
-	public Curso(String d) {
-		this.descripcion = d;
-	}
+	public Curso(String d) { this.descripcion = d; }
 
 	public Curso(Integer id, String d) {
 		this.idCurso = id;
 		this.descripcion = d;
 	}
 
-	public Integer getIdCurso() {
-		return idCurso;
-	}
+	public Integer getIdCurso() { return idCurso; }
+	public String getDescripcion() { return descripcion; }
 
-	public void setIdCurso(Integer id) {
-		this.idCurso = id;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String d) {
-		this.descripcion = d;
-	}
+    public void setIdCurso(Integer id) { this.idCurso = id; }
+	public void setDescripcion(String d) { this.descripcion = d; }
 }
