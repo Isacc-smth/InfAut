@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #420e12;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.BuscarCursoController">
+   <children>
+      <TableView fx:id="tablaDeBusqueda" layoutX="103.0" layoutY="80.0" onMouseClicked="#completarEnSingleton" prefHeight="200.0" prefWidth="284.0">
+        <columns>
+          <TableColumn fx:id="ColumnaId" prefWidth="57.0" text="id" />
+          <TableColumn fx:id="ColumnaCurso" prefWidth="226.0" text="Curso" />
+        </columns>
+      </TableView>
+      <TextField layoutX="130.0" layoutY="37.0" prefHeight="24.0" prefWidth="225.0" promptText="🔍 Ingrese el Curso" />
+   </children>
+</AnchorPane>
