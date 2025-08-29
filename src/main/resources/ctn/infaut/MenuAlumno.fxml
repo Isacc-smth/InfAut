@@ -39,7 +39,7 @@
                         <Font size="22.0" />
                     </font>
                 </Label>
-            <Button fx:id="Nuevo1" layoutX="550.0" layoutY="138.0" mnemonicParsing="false" onAction="#newEntry" text="Buscar Curso" />
+            <Button fx:id="BuscarCurso" layoutX="550.0" layoutY="138.0" mnemonicParsing="false" onAction="#abrirBuscadorCurso" text="Buscar Curso" />
             </children>
         </Pane>
         <Button fx:id="Nuevo" layoutX="696.0" layoutY="22.0" mnemonicParsing="false" onAction="#newEntry" text="Nuevo" />
