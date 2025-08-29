@@ -85,14 +85,14 @@ public class AlumnoDAO {
     public boolean modificar(Alumno al) {
         String sql = "UPDATE infaut.alumno SET" + 
             " nombre = ?, apellido = ?, ci = ?, id_curso = ?" +
-            "WHERE id_alumno = ?";
+            " WHERE id_alumno = ?";
 
         try (PreparedStatement pstmt = con.getCon().prepareStatement(sql)) {
             pstmt.setString(1, al.getNombre());
             pstmt.setString(2, al.getApellido());
             pstmt.setInt(3, al.getCi());
-            pstmt.setInt(4, al.getIdAlumno());
-            pstmt.setInt(5, al.getIdCurso());
+            pstmt.setInt(4, al.getIdCurso());
+            pstmt.setInt(5, al.getIdAlumno());
 
             pstmt.executeUpdate();
             return true;
