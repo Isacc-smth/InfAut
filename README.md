@@ -8,7 +8,7 @@ El sistema esta estructurado para facilitar la distribucion e implementacion
 en otras instituciones del pais.
 
 ## POR HACER:
-- Finalizar el vinculo entre entidades 'vairos a varios'. 
+- Finalizar el vinculo entre entidades 'varios a varios'. 
 - Implementar la autenticacion por huella.
 - Dar instrucciones y sugerencias de como hacerlo.
 - Limpiar el codigo y documentar via JavaDoc. Notara que gradualmente lo estoy haciendo
@@ -38,7 +38,7 @@ en otras instituciones del pais.
 
 #### Armar el proyecto
 
-> [!CAUTION]
+> [!NOTE]
 > NO es necesario seguir estos pasos si esta trabajando desde un IDE, vscode
 > u otro editor que automatice el compilado y ejecucion.
 > Solo siga estos pasos si realmente necesita ejecutar desde una terminal/cmd
@@ -77,4 +77,4 @@ mvn exec:java -Dexec.mainClass="ctn.infaut.App" # Ejecutar mediante maven
     String user = props.getProperty("db.user");
     String password = props.getProperty("db.password");
 ```
-6. Se recomienda implemantar Pooling para optimizar las transacciones. Yo no lo he hecho   porque el DBaaS ya lo tiene.
+6. Se recomienda implemantar Pooling para optimizar las transacciones. Yo no lo he hecho porque el DBaaS ya lo tiene.
