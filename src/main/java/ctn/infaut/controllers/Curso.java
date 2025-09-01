@@ -23,6 +23,6 @@ public class Curso {
 	public Integer getIdCurso() { return idCurso; }
 	public String getDescripcion() { return descripcion; }
 
-    public void setIdCurso(Integer id) { this.idCurso = id; }
+        public void setIdCurso(Integer id) { this.idCurso = id; }
 	public void setDescripcion(String d) { this.descripcion = d; }
 }
