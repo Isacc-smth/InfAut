@@ -12,5 +12,8 @@ public class CursoMateriaDTO {
    public void setIdCurso(Integer idCurso) { this.idCurso = idCurso; }
    public void setIdMateria(Integer idMateria) { this.idMateria = idMateria; }
 
-
+   public CursoMateriaDTO( Integer idCurso, Integer idMateria) {
+       this.idCurso = idCurso;
+       this.idMateria = idMateria;
+   }
 }
