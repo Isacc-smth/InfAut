@@ -24,7 +24,7 @@ import javafx.scene.input.MouseEvent;
 
 public class MenuProfesorController implements Initializable {
 
-    Docente d = new Docente();
+    Docente d;
     DocenteDAO DocenteSQL;
 
     boolean isUpdatingRow = false;
