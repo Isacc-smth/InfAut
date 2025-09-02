@@ -12,23 +12,18 @@ public class Materia {
     String horaFin;
     Integer idAula;
 
-
-    // Getters
     public Integer getIdMateria() { return this.idMateria; }
     public String getNombre() { return this.nombre; }
     public Integer getIdAula() { return this.idAula; }
     public String getHoraInicio() { return this.horaInicio; }
     public String getHoraFin() { return this.horaFin; }
 
-    // Setters
     public void setIdMateria(Integer id) { this.idMateria = id; }
     public void setIdAula(Integer id) { this.idAula = id; }
-public void setHoraInicio(String hora) { this.horaInicio = hora; }
+    public void setHoraInicio(String hora) { this.horaInicio = hora; }
     public void setHoraFin(String hora) { this.horaFin = hora; }
 
-    public Materia() {
-    }
-
+    public Materia() { }
     /**
      * Crea una materia con los datos básicos (sin idMateria)
      *
