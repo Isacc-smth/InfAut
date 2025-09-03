@@ -179,8 +179,8 @@ public class MenuAlumnoController implements Initializable {
             }
         }
 
-        updateTable();
         cancel(event);
+        updateTable();
     }
 
     @FXML
@@ -204,6 +204,7 @@ public class MenuAlumnoController implements Initializable {
             }
         }
 
+        cancel(event);
         updateTable();
     }
 
@@ -276,7 +277,7 @@ public class MenuAlumnoController implements Initializable {
         Nombre.setDisable(false);
         Apellido.setDisable(false);
         CI.setDisable(false);
-        idCurso.setDisable(false); // para que pueda cambiar la referencia del curso
+        // idCurso.setDisable(false); // para que pueda cambiar la referencia del curso
 
     }
 }

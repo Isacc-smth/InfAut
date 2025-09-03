@@ -1,11 +1,5 @@
 package ctn.infaut.controllers;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-import com.machinezoo.sourceafis.*;
-
 import ctn.infaut.utils.HuellaUtils;
 
 public class Huella {
