@@ -12,6 +12,8 @@ import java.util.Properties;
 import ctn.infaut.connection.Conexion;
 import ctn.infaut.controllers.Huella;
 
+// TODO: Refactor
+
 /**
  * Clase para controllar las consultas SQL realizadas por {@link ctn.infaut.MenuHuellaController}.
  * <p>
@@ -51,6 +53,7 @@ public class HuellaDAO {
      * 
      * @param h imagen a insertar. La imagen se guarda como un arreglo de bytes
      * @return true si la consulta se ejecuta correctamente, false de lo contrario
+     *
      */
     public boolean insertar(Huella h) {
         String sql = "INSERT INTO infaut.huella VALUES (?,?,PGP_SYM_ENCRYPT(?, ?))";
@@ -110,8 +113,6 @@ public class HuellaDAO {
             return false;
         } 
     }
-    
-    // TODO: Encriptar las huellas antes de registrar
     
     /**
      * Metodo para obtener las huellas de la base de datos
