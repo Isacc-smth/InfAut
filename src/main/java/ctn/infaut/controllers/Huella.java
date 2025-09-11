@@ -1,6 +1,6 @@
 package ctn.infaut.controllers;
 
-import ctn.infaut.utils.HuellaUtils;
+import ctn.infaut.huella.HuellaUtils;
 
 public class Huella {
     private Integer idHuella;
