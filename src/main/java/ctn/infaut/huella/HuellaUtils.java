@@ -1,4 +1,4 @@
-package ctn.infaut.utils;
+package ctn.infaut.huella;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,7 +18,7 @@ public interface HuellaUtils {
      * Método para generar una imagen comprimida y serilizada desde
      * un archivo, solamente utilizado en pruebas. En la práctica,
      * deberá obtenerlas mediante el SDK del dispositivo o algún protocolo
-     * como el RS-485 que fue mi caso.
+     * como el RS-485 que fue mi caso. 
      *
      * @param path La ruta del archivo
      *
