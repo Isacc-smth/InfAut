@@ -11,7 +11,7 @@ en otras instituciones del pais.
 - Finalizar el vinculo entre entidades 'varios a varios'. 
 - Implementar la autenticacion por huella.
 - Dar instrucciones y sugerencias de como hacerlo. Separar las instrucciones en [SETUP](setup.md)
-- Limpiar el codigo y documentar via JavaDoc. Notara que gradualmente lo estoy haciendo
+- Limpiar el codigo y documentar via JavaDoc. Notará que gradualmente lo estoy haciendo
 
 ### Funcionalidades
 
