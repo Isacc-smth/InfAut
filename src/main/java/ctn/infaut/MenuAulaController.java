@@ -127,6 +127,16 @@ public class MenuAulaController implements Initializable {
     private void saveChanges(ActionEvent event) throws SQLException {
         String desc = Description.getText();
 
+        if (Description.getText().isEmpty()) {
+            Alert emptyFields = AlertFactory.generateAlert(
+                        Alert.AlertType.WARNING, 
+                "Campos Vacios", 
+                "Debe completarlos todos para poder hacer cambios"
+            );
+            emptyFields.show();
+            return;
+        }
+
         if (isMod) {
             Integer id = Integer.parseInt(RoomId.getText());
             Aula a = new Aula(id, desc);
