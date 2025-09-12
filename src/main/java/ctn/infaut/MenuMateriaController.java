@@ -204,8 +204,6 @@ public class MenuMateriaController implements Initializable {
      * fila seleccionada, al hacer clic en una fila de la tabla con las materias.
      *
      * @param event representa el click del mouse
-     * 
-     *
      */
     @FXML
     private void completeFields(MouseEvent event) {
