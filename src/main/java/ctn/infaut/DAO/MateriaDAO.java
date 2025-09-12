@@ -24,8 +24,6 @@ public class MateriaDAO {
 
         // Insertar en la tabla infaut.materia
         try (PreparedStatement pstmt = con.getCon().prepareStatement(sql)) {
-//             TODO("Insertar en las tablas de detalle que voy a cambiar su nombre");
-
             pstmt.setString(1, m.getNombre());
             pstmt.setString(2, m.getHoraInicio());
             pstmt.setString(3, m.getHoraFin());
