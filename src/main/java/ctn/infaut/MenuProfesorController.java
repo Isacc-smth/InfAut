@@ -19,6 +19,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
@@ -162,6 +163,16 @@ public class MenuProfesorController implements Initializable {
 
     @FXML
     private void saveChanges(ActionEvent event) throws NumberFormatException, SQLException {
+        if (hayCamposVacios()) {
+            Alert emptyFields = AlertFactory.generateAlert(
+                AlertType.WARNING,
+                "Campos vacios",
+                "Tiene que completarlos todos para guardar cambios"
+            );
+
+            emptyFields.show();
+            return;
+        }
 
         String name = NameField.getText();
         String lastName = LastNameField.getText();
@@ -210,5 +221,13 @@ public class MenuProfesorController implements Initializable {
         Docente d = new Docente(teacherId, name, lastName, idNumber);
 
         return d;
+    }
+
+    private boolean hayCamposVacios() {
+        return (
+            NameField.getText().isBlank() ||
+            LastNameField.getText().isBlank() ||
+            IDNumberField.getText().isBlank()
+       );
     }
 }

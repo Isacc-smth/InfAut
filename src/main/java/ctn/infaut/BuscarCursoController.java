@@ -87,5 +87,4 @@ public class BuscarCursoController implements Initializable {
             stage.close();
         }
 	}
-	
 }
