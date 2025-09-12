@@ -90,7 +90,6 @@ public class MateriaDAO {
                         rs.getString("hora_fin"),
                         rs.getInt("aula_id_aula")
                     );
-
                 result.add(m);
             }
             return result;

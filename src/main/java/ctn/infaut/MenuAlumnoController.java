@@ -157,6 +157,16 @@ public class MenuAlumnoController implements Initializable {
 
         Alumno al = getFromTextFields();
 
+        if (hayCamposVacios()) {
+            Alert emptyFields = AlertFactory.generateAlert(
+                        Alert.AlertType.WARNING, 
+                "Campos Vacios", 
+                "Debe completarlos todos para poder hacer cambios"
+            );
+            emptyFields.show();
+            return;
+        }
+
         if (isModifying & al != null) {
             if (AlumnoSQL.modificar(al)) {
                 Alert modSuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
@@ -278,5 +288,40 @@ public class MenuAlumnoController implements Initializable {
         CI.setDisable(false);
         idCurso.setDisable(false); // para que pueda cambiar la referencia del curso
 
+    }
+
+    private boolean hayCamposVacios() {
+        return (
+            idCurso.getText().trim().isEmpty() || 
+            Curso.getText().trim().isEmpty() ||
+            Nombre.getText().isEmpty() || 
+            Apellido.getText().trim().isEmpty() ||
+            CI.getText().trim().isEmpty()
+        );
+    }
+
+    private boolean isCiValid() {
+        try {
+            
+        } catch (NumberFormatException e) {
+            Alert invalidNumber = AlertFactory.generateAlert(
+                AlertType.ERROR, 
+                "Valor numérico inválido",
+                "El CI no es un número"
+            );
+            return false;
+        }
+
+        Integer ci = Integer.parseInt(CI.getText()); 
+        if (600000 < ci || ci <= 10000000) {
+            Alert invalidNumber = AlertFactory.generateAlert(
+                AlertType.ERROR, 
+                "Valor numérico inválido",
+                "El CI no se encuentra dentro del rango válido "
+            );
+            return false;
+
+        }
+        return true;
     }
 }

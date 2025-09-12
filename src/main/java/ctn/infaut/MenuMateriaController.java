@@ -4,6 +4,8 @@
  */
 package ctn.infaut;
 
+// TODO: Menu de buscar sala
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -24,6 +26,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
@@ -99,6 +102,15 @@ public class MenuMateriaController implements Initializable {
     @FXML
     private void saveChanges(ActionEvent event) throws IllegalArgumentException {
 
+        if (hayCamposVacios()) {
+            Alert invalidFields = AlertFactory.generateAlert(
+                    AlertType.WARNING, 
+                    "Campos vacíos",
+                    "Tiene que completar todos para guardar cambios"
+                );
+            return;
+        }
+
         String nombre = Nombre.getText();
         String hora_incio = HoraInicio.getText();
         String hora_fin = HoraFin.getText();
@@ -172,8 +184,9 @@ public class MenuMateriaController implements Initializable {
     @FXML
     private void delete(ActionEvent event) {
         Alert confirmDelete = AlertFactory.generateAlert(
-                Alert.AlertType.CONFIRMATION,
-                "Seguro que desea borrar el aula. ESTA ACCION NO SE PUEDE REVERTIR");
+            Alert.AlertType.CONFIRMATION,
+            "Seguro que desea borrar el aula. ESTA ACCION NO SE PUEDE REVERTIR"
+        );
 
         Integer num_materia = Integer.parseInt(NumMateria.getText());
         Integer num_sala = Integer.parseInt(NumSala.getText());
@@ -227,18 +240,16 @@ public class MenuMateriaController implements Initializable {
         NumSala.setDisable(false);
     }
 
-    /**
-     * Inicia
-     *
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             MateriaSQL = new MateriaDAO();
             updateTable();
         } catch (SQLException e) {
-            Alert initialQueryFailure = AlertFactory.generateAlert(Alert.AlertType.ERROR,
-                    "Hubo un error al obtener las materias" + e.getMessage());
+            Alert initialQueryFailure = AlertFactory.generateAlert(
+                Alert.AlertType.ERROR,
+                "Hubo un error al obtener las materias" + e.getMessage()
+            );
             initialQueryFailure.show();
         }
     }
@@ -257,6 +268,14 @@ public class MenuMateriaController implements Initializable {
             Alert queryFail = AlertFactory.generateAlert(Alert.AlertType.ERROR, "Hubo un error al obtener las tablas");
             queryFail.show();
         }
+    }
 
+    private boolean hayCamposVacios() {
+        return (
+            Nombre.getText().trim().isEmpty() ||
+            HoraInicio.getText().trim().isEmpty() ||
+            HoraFin.getText().trim().isEmpty() ||
+            NumSala.getText().trim().isEmpty()
+        );
     }
 }

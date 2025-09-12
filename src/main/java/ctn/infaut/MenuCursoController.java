@@ -71,23 +71,40 @@ public class MenuCursoController implements Initializable {
     @FXML
     private void deleteRoom(ActionEvent event) throws SQLException {
         Alert confirmRemoveAlert = AlertFactory.generateAlert(
-                Alert.AlertType.CONFIRMATION,
-                "Seguro que desea eliminar el curso. ESTA ACCION NO SE PUEDE REVERTIR!!");
+            Alert.AlertType.CONFIRMATION,
+            "Seguro que desea eliminar el curso. ESTA ACCION NO SE PUEDE REVERTIR!!"
+        );
         Optional<ButtonType> opt = confirmRemoveAlert.showAndWait();
 
         Integer idCurso = Integer.parseInt(IdCurso.getText());
-        String desc = Descripcion.getText();
+        String desc = Descripcion.getText().trim();
+
+        if (desc.isEmpty()) {
+                Alert invalidFields = AlertFactory.generateAlert(
+                    Alert.AlertType.ERROR,
+                    "Campos Vacios",
+                    "Debe completarlos para hacer cambios"
+                );
+                invalidFields.show();
+                return;
+        }
+
+
         Curso roomToDelete = new Curso(idCurso, desc);
 
         if (opt.get() == ButtonType.OK) {
             if (CursoSQL.eliminar(roomToDelete)) {
-                Alert deleteSuccess = AlertFactory.generateAlert(Alert.AlertType.INFORMATION,
-                        "Se elimino el curso con exito. Fuiste advertido");
+                Alert deleteSuccess = AlertFactory.generateAlert(
+                    Alert.AlertType.INFORMATION,
+                    "Se elimino el curso con exito. Fuiste advertido"
+                );
 
                 deleteSuccess.show();
             } else {
-                Alert deleteFailure = AlertFactory.generateAlert(Alert.AlertType.ERROR,
-                        "Hubo un error al eliminar el curso");
+                Alert deleteFailure = AlertFactory.generateAlert(
+                    Alert.AlertType.ERROR,
+                    "Hubo un error al eliminar el curso"
+                );
 
                 deleteFailure.show();
                 updateTable();
@@ -126,7 +143,18 @@ public class MenuCursoController implements Initializable {
 
     @FXML
     private void saveChanges(ActionEvent event) throws SQLException {
-        String desc = Descripcion.getText();
+        String desc = Descripcion.getText().trim();
+
+        if (desc.isEmpty()) {
+            Alert emptyFields = AlertFactory.generateAlert(
+                        Alert.AlertType.WARNING, 
+                "Campos Vacios", 
+                "Debe completarlos todos para poder hacer cambios"
+            );
+            emptyFields.show();
+            return;
+
+        }
 
         if (isMod) {
             Integer id = Integer.parseInt(IdCurso.getText());
