@@ -154,9 +154,6 @@ public class MenuAlumnoController implements Initializable {
 
     @FXML
     private void saveChanges(ActionEvent event) throws NumberFormatException {
-
-        Alumno al = getFromTextFields();
-
         if (hayCamposVacios()) {
             Alert emptyFields = AlertFactory.generateAlert(
                         Alert.AlertType.WARNING, 
@@ -166,6 +163,8 @@ public class MenuAlumnoController implements Initializable {
             emptyFields.show();
             return;
         }
+
+        Alumno al = getFromTextFields();
 
         if (isModifying & al != null) {
             if (AlumnoSQL.modificar(al)) {

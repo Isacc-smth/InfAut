@@ -7,12 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-  prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d0303;"
-  xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1"
-  fx:controller="ctn.infaut.MenuAdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #2d0303;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.MenuAdminController">
   <children>
-    <MenuBar fx:id="MainMenuBar" prefHeight="27.0" prefWidth="630.0">
+    <MenuBar fx:id="MainMenuBar" prefHeight="27.0" prefWidth="600.0">
       <menus>
         <Menu fx:id="ActionsMenu" mnemonicParsing="false" text="Acciones">
           <items>
@@ -21,37 +18,27 @@
         </Menu>
         <Menu fx:id="TableSelectionMenu" mnemonicParsing="false" text="Tablas">
           <items>
-            <MenuItem fx:id="TeacherItem" mnemonicParsing="false" onAction="#openTeacherMenu"
-              text="Docente" />
-            <MenuItem fx:id="StuedentItem" mnemonicParsing="false" onAction="#openStudentMenu"
-              text="Alumno" />
-            <MenuItem fx:id="FingerprintItem" mnemonicParsing="false"
-              onAction="#openFingerprintMenu" text="Huella" />
-            <MenuItem fx:id="AssignatureItem" mnemonicParsing="false"
-              onAction="#openAssignatureMenu" text="Materia" />
-            <MenuItem fx:id="CourseItem" mnemonicParsing="false" onAction="#openCourseMenu"
-              text="Curso" />
-            <MenuItem fx:id="ClassroomItem" mnemonicParsing="false" onAction="#openClassroomMenu"
-              text="Aula" />
+            <MenuItem fx:id="TeacherItem" mnemonicParsing="false" onAction="#openTeacherMenu" text="Docente" />
+            <MenuItem fx:id="StuedentItem" mnemonicParsing="false" onAction="#openStudentMenu" text="Alumno" />
+            <MenuItem fx:id="FingerprintItem" mnemonicParsing="false" onAction="#openFingerprintMenu" text="Huella" />
+            <MenuItem fx:id="AssignatureItem" mnemonicParsing="false" onAction="#openAssignatureMenu" text="Materia" />
+            <MenuItem fx:id="CourseItem" mnemonicParsing="false" onAction="#openCourseMenu" text="Curso" />
+            <MenuItem fx:id="ClassroomItem" mnemonicParsing="false" onAction="#openClassroomMenu" text="Aula" />
           </items>
         </Menu>
       </menus>
     </MenuBar>
-    <Label layoutX="191.0" layoutY="62.0" prefHeight="86.0" prefWidth="243.0" text="¡Bienvenido!"
-      textAlignment="CENTER">
+    <Label layoutX="191.0" layoutY="62.0" prefHeight="86.0" prefWidth="243.0" text="¡Bienvenido!" textAlignment="CENTER">
       <font>
         <Font size="32.0" />
       </font>
     </Label>
-    <Label layoutX="161.0" layoutY="138.0" prefHeight="86.0" prefWidth="280.0"
-      text="Menu de Administrador" textAlignment="CENTER" textFill="WHITE">
+    <Label layoutX="161.0" layoutY="138.0" prefHeight="86.0" prefWidth="280.0" text="Menu de Administrador" textAlignment="CENTER" textFill="WHITE">
       <font>
         <Font size="22.0" />
       </font>
     </Label>
-    <Label layoutX="160.0" layoutY="208.0" prefHeight="86.0" prefWidth="280.0"
-      text="Usa los menus de arriba para empezar" textAlignment="CENTER" textFill="WHITE"
-      wrapText="true">
+    <Label layoutX="160.0" layoutY="208.0" prefHeight="86.0" prefWidth="280.0" text="Usa los menus de arriba para empezar" textAlignment="CENTER" textFill="WHITE" wrapText="true">
       <font>
         <Font size="16.0" />
       </font>
