@@ -91,13 +91,8 @@ public class MenuAlumnoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            AlumnoSQL = new AlumnoDAO();
-            updateTable();
-        } catch (SQLException e) {
-            Alert initialQueryFailed = AlertFactory.generateAlert(Alert.AlertType.ERROR, "Error critico!!",
-                    "Hubo un error al ohbtener las filas: \n" + e.getMessage());
-        }
+        AlumnoSQL = new AlumnoDAO();
+        updateTable();
     }
 
     @FXML
@@ -165,6 +160,16 @@ public class MenuAlumnoController implements Initializable {
         }
 
         Alumno al = getFromTextFields();
+
+        if (hayCamposVacios()) {
+            Alert emptyFields = AlertFactory.generateAlert(
+                        Alert.AlertType.WARNING, 
+                "Campos Vacios", 
+                "Debe completarlos todos para poder hacer cambios"
+            );
+            emptyFields.show();
+            return;
+        }
 
         if (isModifying & al != null) {
             if (AlumnoSQL.modificar(al)) {

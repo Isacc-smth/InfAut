@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -12,16 +11,21 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 public class Conexion {
-    Connection con;
+    private static HikariDataSource ds;
+    private static HikariConfig config = new HikariConfig();
 
-    public Conexion() throws SQLException {
-        Properties props = new Properties();
+    private Conexion() {};
+
+    static {
         try (FileInputStream db = new FileInputStream("db.properties")) {
+            Properties props = new Properties();
             props.load(db);
 
-            System.out.println("Se conectó con éxito a la base de datos, YIPEEE!");
-        } catch (SQLException e) {
-            System.err.println("Error al conectar con la base de datos: " + e.getMessage());
+            config.setJdbcUrl(props.getProperty("db.url"));
+            config.setUsername(props.getProperty("db.user"));
+            config.setPassword(props.getProperty("db.password"));
+
+            ds = new HikariDataSource(config);
         } catch (FileNotFoundException fe) {
             System.err.println("No se encontró el archivo db.properties:" + fe.getMessage());
         } catch (IOException ie) {
@@ -30,7 +34,7 @@ public class Conexion {
         }
     }
 
-    public Connection getCon() throws SQLException {
-        return con;
+    public static Connection getCon() throws SQLException {
+        return ds.getConnection();
     }
 }
