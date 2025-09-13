@@ -72,9 +72,3 @@ mvn exec:java -Dexec.mainClass="ctn.infaut.App" # Ejecutar mediante maven
     db.user={usuario}
     db.password={contraseña}
 ```
-5. Posteriormente, agregar en la clase [Conexion](src/main/java/ctn/infaut/connection/Conexion.java)
-```java
-    String user = props.getProperty("db.user");
-    String password = props.getProperty("db.password");
-```
-6. Se recomienda implemantar Pooling para optimizar las transacciones. Yo no lo he hecho porque el DBaaS ya lo tiene.
