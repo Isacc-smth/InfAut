@@ -7,9 +7,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.MenuAulasController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.MenuAulaController">
    <children>
-      <TableView fx:id="RoomsTable" layoutX="330.0" layoutY="38.0" onMouseClicked="#completeField" prefHeight="331.0" prefWidth="212.0">
+      <TableView fx:id="RoomsTable" layoutX="330.0" layoutY="38.0" onMouseClicked="#completeFields" prefHeight="331.0" prefWidth="212.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="75.0" text="idAula" />
           <TableColumn fx:id="descColumn" prefWidth="136.0" text="Descripcion" />
