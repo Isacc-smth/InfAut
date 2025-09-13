@@ -91,13 +91,8 @@ public class MenuAlumnoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            AlumnoSQL = new AlumnoDAO();
-            updateTable();
-        } catch (SQLException e) {
-            Alert initialQueryFailed = AlertFactory.generateAlert(Alert.AlertType.ERROR, "Error critico!!",
-                    "Hubo un error al ohbtener las filas: \n" + e.getMessage());
-        }
+        AlumnoSQL = new AlumnoDAO();
+        updateTable();
     }
 
     @FXML
