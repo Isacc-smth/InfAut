@@ -95,22 +95,19 @@ public class MenuAulaController implements Initializable {
     }
 
     @FXML
-    private void completarCampos(MouseEvent event) {
+    private void completeFields(MouseEvent event) {
         Aula selection = RoomsTable.getSelectionModel().getSelectedItem();
 
         if (selection != null) {
             RoomId.setText(String.valueOf(selection.getIdAula()));
             Description.setText(selection.getDescripcion());
+            New.setDisable(true);
+            Save.setDisable(false);
+            Delete.setDisable(false);
+            Cancel.setDisable(false);
+            Description.setDisable(false);
+            isMod = true;
         }
-
-        New.setDisable(true);
-        Save.setDisable(false);
-        Delete.setDisable(false);
-        Cancel.setDisable(false);
-
-        Description.setDisable(false);
-
-        isMod = true;
     }
 
     @FXML

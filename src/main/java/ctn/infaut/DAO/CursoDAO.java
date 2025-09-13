@@ -18,15 +18,9 @@ import java.util.ArrayList;
  * isaacfeltes
  */
 public class CursoDAO {
-    private Conexion con;
-
-    public CursoDAO() throws SQLException {
-        con = new Conexion();
-    }
-
     public boolean insertar(Curso c) throws SQLException {
         String sql = "INSERT INTO infaut.curso (descripcion) VALUES (?)";
-        try (PreparedStatement pstmt = con.getCon().prepareStatement(sql)) {
+        try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
             pstmt.setString(1, c.getDescripcion());
             pstmt.executeUpdate();
             return true;
@@ -38,7 +32,7 @@ public class CursoDAO {
 
     public boolean eliminar(Curso c) throws SQLException {
         String sql = "DELETE FROM infaut.curso WHERE id_curso = ?";
-        try (PreparedStatement pstmt = con.getCon().prepareStatement(sql)) {
+        try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
             pstmt.setInt(1, c.getIdCurso());
             pstmt.executeUpdate();
             return true;
@@ -52,7 +46,7 @@ public class CursoDAO {
         ArrayList<Curso> rooms = new ArrayList<>();
         String sql = "SELECT * FROM infaut.curso WHERE 1=1";
 
-        try (Statement stmt = con.getCon().createStatement()) {
+        try (Statement stmt = Conexion.getCon().createStatement()) {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 rooms.add(new Curso(
@@ -68,7 +62,7 @@ public class CursoDAO {
 
     public boolean modificar(Curso a) throws SQLException {
         String sql = "UPDATE infaut.curso SET descripcion = ? WHERE id_curso = ?";
-        try (PreparedStatement pstmt = con.getCon().prepareStatement(sql)) {
+        try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
             pstmt.setString(1, a.getDescripcion());
             pstmt.setInt(2, a.getIdCurso());
 

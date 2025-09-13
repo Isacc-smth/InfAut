@@ -21,15 +21,9 @@ import ctn.infaut.connection.Conexion;
  *
  * */
 public class AlumnoDAO {
-    private Conexion con;
-
-    public AlumnoDAO() throws SQLException {
-        con = new Conexion();
-    }
-
     public boolean insertar(Alumno al) {
         String sql = "INSERT INTO infaut.alumno (nombre, apellido, ci, id_curso) values (?,?,?,?)";
-        try (PreparedStatement pstmt = con.getCon().prepareStatement(sql)) {
+        try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
             pstmt.setString(1, al.getNombre());
             pstmt.setString(2, al.getApellido());
             pstmt.setInt(3, al.getCi());
@@ -48,7 +42,7 @@ public class AlumnoDAO {
         String sql = "SELECT id_alumno, nombre, apellido, ci, c.id_curso, descripcion " + 
             "FROM infaut.alumno a INNER JOIN infaut.curso c ON a.id_curso = c.id_curso " + 
             "WHERE 1=1";
-        try (Statement stmt = con.getCon().createStatement()) {
+        try (Statement stmt = Conexion.getCon().createStatement()) {
             ArrayList<AlumnoCursoDTO> students = new ArrayList<>();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -71,7 +65,7 @@ public class AlumnoDAO {
 
     public boolean eliminar(Alumno al) {
         String sql = "DELETE FROM infaut.alumno WHERE id_alumno = ?";
-        try (PreparedStatement pstmt = con.getCon().prepareStatement(sql)) {
+        try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
             pstmt.setInt(1, al.getIdAlumno());
             pstmt.executeUpdate();
             return true;
@@ -87,7 +81,7 @@ public class AlumnoDAO {
             " nombre = ?, apellido = ?, ci = ?, id_curso = ?" +
             " WHERE id_alumno = ?";
 
-        try (PreparedStatement pstmt = con.getCon().prepareStatement(sql)) {
+        try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
             pstmt.setString(1, al.getNombre());
             pstmt.setString(2, al.getApellido());
             pstmt.setInt(3, al.getCi());

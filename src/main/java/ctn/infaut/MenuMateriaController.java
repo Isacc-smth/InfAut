@@ -244,16 +244,8 @@ public class MenuMateriaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            MateriaSQL = new MateriaDAO();
-            updateTable();
-        } catch (SQLException e) {
-            Alert initialQueryFailure = AlertFactory.generateAlert(
-                Alert.AlertType.ERROR,
-                "Hubo un error al obtener las materias" + e.getMessage()
-            );
-            initialQueryFailure.show();
-        }
+        MateriaSQL = new MateriaDAO();
+        updateTable();
     }
 
     private void updateTable() {
