@@ -4,31 +4,37 @@
  */
 package ctn.infaut;
 
+import java.io.IOException;
+
 // TODO: Menu de buscar sala
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import javafx.scene.control.TableView;
-
 import ctn.infaut.DAO.MateriaDAO;
+import ctn.infaut.controllers.Aula;
+import ctn.infaut.controllers.AulaSingleton;
 import ctn.infaut.controllers.Materia;
-
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.collections.FXCollections;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * 
@@ -45,6 +51,8 @@ public class MenuMateriaController implements Initializable {
     private Button Cancel;
     @FXML
     private Button Delete;
+    @FXML
+    private Button BuscarAula;
 
     @FXML
     private TableView<Materia> ClassesTable;
@@ -66,8 +74,10 @@ public class MenuMateriaController implements Initializable {
     @FXML
     private TextField HoraFin;
     @FXML
-    private TextField NumSala;
-
+    private TextField NombreSala;
+    @FXML
+    private TextField NomSala;
+		
     ObservableList<Materia> classesList;
     private boolean isMod = false;
     private MateriaDAO MateriaSQL;
@@ -87,7 +97,7 @@ public class MenuMateriaController implements Initializable {
         Nombre.setDisable(false);
         HoraInicio.setDisable(false);
         HoraFin.setDisable(false);
-        NumSala.setDisable(false);
+        NombreSala.setDisable(false);
 
         isMod = false;
     }
@@ -108,13 +118,14 @@ public class MenuMateriaController implements Initializable {
                     "Campos vacíos",
                     "Tiene que completar todos para guardar cambios"
                 );
+            invalidFields.show();
             return;
         }
 
         String nombre = Nombre.getText();
         String hora_incio = HoraInicio.getText();
         String hora_fin = HoraFin.getText();
-        Integer num_sala = Integer.parseInt(NumSala.getText());
+        Integer num_sala = AulaSingleton.getInstance().getIdAula();
 
         Materia m = new Materia(nombre, hora_incio, hora_fin, num_sala);
 
@@ -161,13 +172,13 @@ public class MenuMateriaController implements Initializable {
         Nombre.setDisable(true);
         HoraInicio.setDisable(true);
         HoraFin.setDisable(true);
-        NumSala.setDisable(true);
+        NombreSala.setDisable(true);
 
         NumMateria.setText("");
         Nombre.setText("");
         HoraInicio.setText("");
         HoraFin.setText("");
-        NumSala.setText("");
+        NombreSala.setText("");
 
         isMod = false;
     }
@@ -189,7 +200,7 @@ public class MenuMateriaController implements Initializable {
         );
 
         Integer num_materia = Integer.parseInt(NumMateria.getText());
-        Integer num_sala = Integer.parseInt(NumSala.getText());
+        Integer num_sala = Integer.parseInt(NombreSala.getText());
 
         String nombre = Nombre.getText();
         String hora_inicio = HoraInicio.getText();
@@ -223,7 +234,7 @@ public class MenuMateriaController implements Initializable {
         Materia selection = ClassesTable.getSelectionModel().getSelectedItem();
 
         NumMateria.setText(String.valueOf(selection.getIdMateria()));
-        NumSala.setText(String.valueOf(selection.getIdMateria()));
+        NombreSala.setText(String.valueOf(selection.getIdMateria()));
 
         Nombre.setText(selection.getNombre());
         HoraInicio.setText(selection.getHoraInicio());
@@ -237,7 +248,32 @@ public class MenuMateriaController implements Initializable {
         Nombre.setDisable(false);
         HoraInicio.setDisable(false);
         HoraFin.setDisable(false);
-        NumSala.setDisable(false);
+        NombreSala.setDisable(false);
+    }
+
+    @FXML
+    private void AbrirBuscador(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("BuscarAula.fxml"));
+        try {
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+            stage.setTitle("Buscar Aula");
+
+            stage.showAndWait();
+
+            NombreSala.setText(String.valueOf(AulaSingleton.getInstance().getIdAula()));
+            NomSala.setText(String.valueOf(AulaSingleton.getInstance().getDescripcion()));
+
+        } catch (IOException e) {
+            Alert aperturaFXMLFallo = AlertFactory.generateAlert(AlertType.ERROR,
+                    "CRITICO:",
+                    "No se pudo abir el buscador"
+                );
+            aperturaFXMLFallo.showAndWait();
+        }
     }
 
     @Override
@@ -267,7 +303,8 @@ public class MenuMateriaController implements Initializable {
             Nombre.getText().trim().isEmpty() ||
             HoraInicio.getText().trim().isEmpty() ||
             HoraFin.getText().trim().isEmpty() ||
-            NumSala.getText().trim().isEmpty()
+            NombreSala.getText().trim().isEmpty()
         );
     }
+
 }

@@ -146,6 +146,8 @@ public class MenuProfesorController implements Initializable {
         New.setDisable(false);
         Cancel.setDisable(true);
 
+        cleanFields();
+
         Save.setDisable(true);
         NameField.setDisable(true);
         LastNameField.setDisable(true);
@@ -216,11 +218,47 @@ public class MenuProfesorController implements Initializable {
         String name = NameField.getText();
         String lastName = LastNameField.getText();
         int idNumber = Integer.parseInt(IDNumberField.getText());
-        int teacherId = Integer.parseInt(TeacherIDField.getText());
+        if  (isCiValid()) {
+            int teacherId = Integer.parseInt(TeacherIDField.getText());
+            Docente d = new Docente(teacherId, name, lastName, idNumber);
+            return d;
+        } else {
+            return null;
+        }
+    }
 
-        Docente d = new Docente(teacherId, name, lastName, idNumber);
+    private boolean isCiValid() {
+        try {
+            String raw = IDNumberField.getText();
+            String digits = raw.replaceAll("\\D", ""); // solo números
 
-        return d;
+            if (digits.isEmpty()) {
+                throw new NumberFormatException();
+            }
+
+            long ci = Long.parseLong(digits);
+
+            if (ci < 600000 || ci > 10000000) {
+                Alert invalidNumber = AlertFactory.generateAlert(
+                    AlertType.ERROR,
+                    "Valor numérico inválido",
+                    "El CI no se encuentra dentro del rango válido"
+                );
+                invalidNumber.show();
+                return false;
+            }
+
+        } catch (NumberFormatException e) {
+            Alert invalidNumber = AlertFactory.generateAlert(
+                AlertType.ERROR,
+                "Valor numérico inválido",
+                "El CI no es un número válido"
+            );
+            invalidNumber.show();
+            return false;
+        }
+
+        return true;
     }
 
     private boolean hayCamposVacios() {
