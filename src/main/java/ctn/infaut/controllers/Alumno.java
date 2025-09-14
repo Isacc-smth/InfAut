@@ -6,7 +6,7 @@ public class Alumno {
 
     private Integer idAlumno;
     private Integer ci;
-		private Integer idCurso;
+    private Integer idCurso;
 
 	public Integer getIdCurso() { return this.idCurso; }
     public String getNombre() { return this.nombre; }

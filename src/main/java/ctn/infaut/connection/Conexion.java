@@ -20,6 +20,9 @@ public class Conexion {
         try (FileInputStream db = new FileInputStream("db.properties")) {
             Properties props = new Properties();
             props.load(db);
+            String url = props.getProperty("db.url");
+            String user = props.getProperty("db.user");
+            String password = props.getProperty("db.password");
 
             config.setJdbcUrl(props.getProperty("db.url"));
             config.setUsername(props.getProperty("db.user"));
@@ -30,7 +33,6 @@ public class Conexion {
             System.err.println("No se encontró el archivo db.properties:" + fe.getMessage());
         } catch (IOException ie) {
             System.err.println("Error al leer las credenciales de la base de datos" + ie.getMessage());
-
         }
     }
 
