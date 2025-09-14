@@ -1,6 +1,8 @@
 /* CSS general para todos los menus, a fin de mantener una consistencia */
+@import url("colors.css");
+
 .root {
-    -fx-background-color: #a71d2a;
+    -fx-background-color: -crimson-darker;
     -fx-padding: 20;
 }
 
@@ -12,7 +14,7 @@
 }
 
 .table-view .column-header-background {
-    -fx-background-color: linear-gradient(#e0e0e0, #d5d5d5);
+    -fx-background-color: linear-gradient(-rose-softer, -rose);
     -fx-background-radius: 10 10 0 0;
 }
 
@@ -46,7 +48,7 @@
 }
 
 .button {
-    -fx-background-color: #e6ccb2;
+    -fx-background-color: -beige-dark;
     -fx-background-radius: 5;
     -fx-border-radius: 5;
     -fx-font-size: 14px;
@@ -56,6 +58,43 @@
     -fx-padding: 8 16;
 }
 
+.menu-bar {
+    -fx-background-color: -beige;      /* deep background */
+    -fx-border-color: -brownish-beige;        /* subtle underline */
+    -fx-border-width: 0 0 2 0;
+    -fx-padding: 5 10 5 10;
+}
+
+.menu {
+    -fx-text-fill: -beige;                    /* beige text for contrast */
+    -fx-padding: 5 15 5 15;
+}
+
+.menu:hover, .menu:showing {
+    -fx-background-color: -rose;              /* highlight on hover */
+    -fx-text-fill: -beige;
+}
+
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: -crimson-dark;             /* darker text */
+    -fx-padding: 5 20 5 20;
+}
+
+.menu-item:hover {
+    -fx-background-color: -rose-soft;         /* softer rose hover */
+    -fx-text-fill: -beige;
+}
+
+.top-bar {
+    -fx-background-color: linear-gradient(-crimson-darker, -crimson-dark)
+}
+
+.items {
+    -fx-margin: 10;
+    -fx-padding-right: 20;
+}
+
 .button:hover {
-    -fx-background-color: #f5deb3;
+    -fx-background-color: -beige;
 }

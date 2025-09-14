@@ -16,6 +16,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("MenuAdmin"), 600, 400);
+        App.setUserAgentStylesheet(getClass().getResource("styles.css").toExternalForm());
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

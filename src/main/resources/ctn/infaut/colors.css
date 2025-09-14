@@ -1,0 +1,13 @@
+/* CSS para definir variables para los colores */
+.root {
+    -rose-softer: #CD5D67;
+    -rose-soft: #BF4342;
+    -rose: #BA1F33;
+    -crimson-subtle: #8C1C13;
+    -crimson: #91171F;
+    -crimson-dark: #410B13;
+    -crimson-darker: #421820;
+    -beige: #E7D7C1;
+    -beige-dark: #A78A7F;
+    -brownish-beige: #735751;
+}
