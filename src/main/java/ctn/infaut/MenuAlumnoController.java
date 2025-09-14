@@ -307,26 +307,26 @@ public class MenuAlumnoController implements Initializable {
 
     private boolean isCiValid() {
         try {
-            
+            Integer ci = Integer.parseInt(CI.getText()); 
+            if (600000 < ci || ci <= 10000000) {
+                Alert invalidNumber = AlertFactory.generateAlert(
+                    AlertType.ERROR, 
+                    "Valor numérico inválido",
+                    "El CI no se encuentra dentro del rango válido "
+                );
+                return false;
+
+            }
+            return true;
         } catch (NumberFormatException e) {
             Alert invalidNumber = AlertFactory.generateAlert(
                 AlertType.ERROR, 
                 "Valor numérico inválido",
                 "El CI no es un número"
             );
+            invalidNumber.show();
             return false;
         }
 
-        Integer ci = Integer.parseInt(CI.getText()); 
-        if (600000 < ci || ci <= 10000000) {
-            Alert invalidNumber = AlertFactory.generateAlert(
-                AlertType.ERROR, 
-                "Valor numérico inválido",
-                "El CI no se encuentra dentro del rango válido "
-            );
-            return false;
-
-        }
-        return true;
     }
 }
