@@ -11,8 +11,7 @@ import java.util.Properties;
 
 import ctn.infaut.connection.Conexion;
 import ctn.infaut.controllers.Huella;
-
-// TODO: Refactor
+import ctn.infaut.DTO.AlumnoHuellaDTO;
 
 /**
  * Clase para controllar las consultas SQL realizadas por {@link ctn.infaut.MenuHuellaController}.
@@ -38,7 +37,7 @@ public class HuellaDAO {
     public HuellaDAO() throws SQLException { 
         try (FileInputStream keys = new FileInputStream("db.properties")) {
             props.load(keys);
-            this.keyPgCrypto =  props.getProperty("DB_ENCRYPTION_KEY");
+            this.keyPgCrypto =  props.getProperty("db.key");
         } catch (IOException e) {
             System.err.println("CRITICO: no se pudo obtener la clave de desencriptacion: " +
                     e.getMessage()); 
@@ -118,16 +117,20 @@ public class HuellaDAO {
      * correctamente, null de lo contrario
      * 
      */
-    public ArrayList<Huella> obtenerHuellas() {
-        ArrayList<Huella> huellas = new ArrayList<Huella>();
-        String sql = "SELECT * FROM infaut.huella WHERE 1=1";
+    public ArrayList<AlumnoHuellaDTO> obtenerHuellas() {
+        ArrayList<AlumnoHuellaDTO> huellas = new ArrayList<AlumnoHuellaDTO>();
+        String sql = "SELECT h.id_huella, a.id_alumno, a.nombre, a.apellido, h.hora_entrada  FROM infaut.huella" + 
+            " INNER JOIN infaut.alumno a ON h.id_alumno = a.id_alumno" + 
+            "WHERE 1=1";
         try (Statement stmt = Conexion.getCon().createStatement()) {
            ResultSet rs = stmt.executeQuery(sql);
            while (rs.next()) {
-               huellas.add(new Huella(
+               huellas.add(new AlumnoHuellaDTO(
                     rs.getInt("id_huella"),
                     rs.getInt("id_alumno"),
-                    rs.getBytes("imagen_huella")
+                    rs.getString("nombre"),
+                    rs.getString("apellido"),
+                    rs.getString("hora_entrada")
                ));
            } 
            return huellas;
