@@ -8,15 +8,40 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #CD5D67;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.UnirMateriaCursoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #CD5D67;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.UnirMateriaCursoController">
    <children>
-      <Pane layoutX="369.0" layoutY="16.0" prefHeight="369.0" prefWidth="211.0" style="-fx-background-color: #BF4342;" />
       <Circle fill="#ba1f33" layoutX="285.0" layoutY="200.0" radius="219.0" stroke="#ba1f33" strokeType="INSIDE" />
-      <Pane layoutX="-7.0" prefHeight="400.0" prefWidth="371.0" style="-fx-background-color: #BA1F33;" />
-      <Button fx:id="Nuevo" layoutX="377.0" layoutY="227.0" mnemonicParsing="false" onAction="#nuevoRelacion" prefHeight="36.0" prefWidth="61.0" style="-fx-background-color: #E7D7C1;" text="Nuevo" />
-      <TableView fx:id="TablaRelacion" layoutX="14.0" layoutY="14.0" prefHeight="371.0" prefWidth="344.0">
+      <Pane layoutX="369.0" layoutY="16.0" opacity="0.76" prefHeight="369.0" prefWidth="224.0" style="-fx-background-color: #BF4342;">
+         <children>
+            <TextField fx:id="txtMateria" disable="true" layoutX="24.0" layoutY="38.0" prefHeight="30.0" prefWidth="141.0" promptText="Materia" />
+            <TextField fx:id="txtCurso" disable="true" layoutX="24.0" layoutY="94.0" prefHeight="30.0" prefWidth="141.0" promptText="Curso" />
+            <Label layoutX="24.0" layoutY="12.0" prefHeight="26.0" prefWidth="61.0" text="Unir" textFill="WHITE" />
+            <Label layoutX="24.0" layoutY="68.0" prefHeight="26.0" prefWidth="61.0" text="Con" textFill="WHITE" />
+            <Button fx:id="Nuevo" layoutX="15.0" layoutY="167.0" mnemonicParsing="false" onAction="#nuevaRelacion" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #E7D7C1;" text="Nuevo">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button fx:id="Guardar" disable="true" layoutX="16.0" layoutY="213.0" mnemonicParsing="false" onAction="#guardarRelacion" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #E7D7C1;" text="Guardar">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button fx:id="buscadorAula" disable="true" layoutX="172.0" layoutY="35.0" mnemonicParsing="false" onAction="#buscarMateria" prefHeight="30.0" prefWidth="37.0" style="-fx-background-color: #E7D7C1;" text="🔍">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button fx:id="buscadorCurso" disable="true" layoutX="172.0" layoutY="91.0" mnemonicParsing="false" onAction="#buscarCurso" prefHeight="30.0" prefWidth="37.0" style="-fx-background-color: #E7D7C1;" text="🔍">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+         </children></Pane>
+      <Pane layoutX="-7.0" prefHeight="400.0" prefWidth="371.0" style="-fx-background-color: #ba1f33;" />
+      <TableView fx:id="TablaRelacion" layoutX="14.0" layoutY="14.0" onMouseClicked="#completarCampos" prefHeight="371.0" prefWidth="344.0">
         <columns>
           <TableColumn fx:id="idCurso" prefWidth="50.0" text="idCurso" />
           <TableColumn fx:id="Curso" prefWidth="91.0" text="Curso" />
@@ -24,12 +49,14 @@
             <TableColumn id="b" fx:id="Materia" prefWidth="143.0" styleClass="b" text="Materia" />
         </columns>
       </TableView>
-      <Button fx:id="Eliminar" layoutX="377.0" layoutY="283.0" mnemonicParsing="false" onAction="#eliminarRelacion" prefHeight="36.0" prefWidth="61.0" style="-fx-background-color: #E7D7C1;" text="Eliminar" />
-      <Button fx:id="cancelar" layoutX="463.0" layoutY="283.0" mnemonicParsing="false" onAction="#cancelarRelacion" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #E7D7C1;" text="Cancelar" />
-      <Button fx:id="Guardar" layoutX="463.0" layoutY="227.0" mnemonicParsing="false" onAction="#guardarRelaciones" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #E7D7C1;" text="Guardar" />
-      <TextField fx:id="txtMateria" layoutX="383.0" layoutY="113.0" promptText="Materia" />
-      <TextField fx:id="txtCurso" layoutX="383.0" layoutY="171.0" promptText="Curso" />
-      <Label layoutX="383.0" layoutY="81.0" prefHeight="26.0" prefWidth="61.0" text="Unir" textFill="WHITE" />
-      <Label layoutX="383.0" layoutY="145.0" prefHeight="26.0" prefWidth="61.0" text="Con" textFill="WHITE" />
+      <Button fx:id="Eliminar" disable="true" layoutX="386.0" layoutY="277.0" mnemonicParsing="false" onAction="#eliminarRelacion" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #E7D7C1;" text="Eliminar">
+         <font>
+            <Font size="10.0" />
+         </font></Button>
+      <Button fx:id="cancelar" disable="true" layoutX="383.0" layoutY="325.0" mnemonicParsing="false" onAction="#cancelarRelacion" prefHeight="36.0" prefWidth="105.0" style="-fx-background-color: #E7D7C1;" text="Cancelar">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

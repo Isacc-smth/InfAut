@@ -20,9 +20,6 @@ public class Conexion {
         try (FileInputStream db = new FileInputStream("db.properties")) {
             Properties props = new Properties();
             props.load(db);
-            String url = props.getProperty("db.url");
-            String user = props.getProperty("db.user");
-            String password = props.getProperty("db.password");
 
             config.setJdbcUrl(props.getProperty("db.url"));
             config.setUsername(props.getProperty("db.user"));

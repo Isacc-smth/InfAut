@@ -6,7 +6,6 @@ import ctn.infaut.connection.Conexion;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -37,12 +36,32 @@ public class CursoMateriaDAO {
         try (Statement stmt = Conexion.getCon().createStatement()) {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
+                result.add(new CursoMateriaDTO(
+                    rs.getInt("id_curso"),
+                    rs.getString("descripcion"),
+                    rs.getInt("id_materia"),
+                    rs.getString("nombre")
+                ));
             }
+            return result;
         } catch (SQLException e) {
             System.err.println("Hubo un error al obtener las relaciones curso, aula: " + e.getMessage());
             return null;
         }
+    }
 
-        return result;
+    public boolean eliminar(CursoMateriaDTO cm) {
+        String sql = "DELETE FROM infaut.curso_materia WHERE id_curso = ? AND id_materia = ?";
+        try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
+            pstmt.setInt(1, cm.getIdCurso());
+            pstmt.setInt(2, cm.getIdCurso());
+
+            pstmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Hubo un error al eliminar la relacion: " + e.getMessage());
+            return false;
+        }
+
     }
 }
