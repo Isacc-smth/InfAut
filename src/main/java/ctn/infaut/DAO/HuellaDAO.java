@@ -52,12 +52,13 @@ public class HuellaDAO {
      *
      */
     public boolean insertar(Huella h) {
-        String sql = "INSERT INTO infaut.huella VALUES (?,?,PGP_SYM_ENCRYPT(?, ?))";
+        String sql = "INSERT INTO infaut.huella VALUES (?, ?, PGP_SYM_ENCRYPT(?, ?), ?) ";
         try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
             pstmt.setInt(1, h.getIdHuella());
-            pstmt.setInt(2, h.getIdAlumno());
-            pstmt.setBytes(3, h.getImagenHuella());
+            pstmt.setBytes(2, h.getSerializada());
+            pstmt.setInt(3, h.getIdAlumno());
             pstmt.setString(4, this.keyPgCrypto);
+            pstmt.setString(5, h.getHoraEntrada());
             pstmt.executeUpdate();
 
             return true;
@@ -117,23 +118,20 @@ public class HuellaDAO {
      * correctamente, null de lo contrario
      * 
      */
-    public ArrayList<AlumnoHuellaDTO> obtenerHuellas() {
-        ArrayList<AlumnoHuellaDTO> huellas = new ArrayList<AlumnoHuellaDTO>();
-        String sql = "SELECT h.id_huella, a.id_alumno, a.nombre, a.apellido, h.hora_entrada  FROM infaut.huella" + 
-            " INNER JOIN infaut.alumno a ON h.id_alumno = a.id_alumno" + 
-            "WHERE 1=1";
+    public static ArrayList<Huella> obtenerHuellas() {
+        ArrayList<Huella> huellas = new ArrayList<Huella>();
+        String sql = "SELECT * FROM infaut.huella where 1=1;";
         try (Statement stmt = Conexion.getCon().createStatement()) {
-           ResultSet rs = stmt.executeQuery(sql);
-           while (rs.next()) {
-               huellas.add(new AlumnoHuellaDTO(
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                huellas.add(new Huella(
                     rs.getInt("id_huella"),
+                    rs.getBytes("imagen_huella"),
                     rs.getInt("id_alumno"),
-                    rs.getString("nombre"),
-                    rs.getString("apellido"),
-                    rs.getString("hora_entrada")
-               ));
-           } 
-           return huellas;
+                    rs.getString("hora_entrada") 
+                ));
+            }
+            return huellas;
         } catch (SQLException e) {
             System.err.println("Hubo un error al obtener las huellas: " + e.getMessage());
             return null;
