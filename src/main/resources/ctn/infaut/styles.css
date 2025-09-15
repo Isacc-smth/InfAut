@@ -2,7 +2,7 @@
 @import url("colors.css");
 
 .root {
-    -fx-background-color: -crimson-darker;
+    -fx-background-color: -crimson;
     -fx-padding: 20;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .label {
-    -fx-text-fill: white;
+    -fx-text-fill: Black;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
 }
