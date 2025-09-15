@@ -30,7 +30,7 @@
             <Circle fill="#91171f" layoutX="437.0" layoutY="83.0" radius="16.0" stroke="TRANSPARENT" strokeType="INSIDE" />
          </children>
       </Pane>
-    <MenuBar fx:id="MainMenuBar" prefHeight="27.0" prefWidth="600.0" styleClass="top-bar" stylesheets="@styles.css">
+    <MenuBar fx:id="MainMenuBar" prefHeight="41.0" prefWidth="600.0" style="-fx-background-color: #A78A7F;" styleClass="top-bar" stylesheets="@styles.css">
       <menus>
         <Menu fx:id="ActionsMenu" mnemonicParsing="false" text="Acciones">
           <items>
