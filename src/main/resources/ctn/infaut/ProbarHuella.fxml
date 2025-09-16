@@ -19,7 +19,7 @@
                   <Image url="@InFauth.png" />
                </image>
             </ImageView>
-            <Button fx:id="pruebaImagen" layoutX="96.0" layoutY="260.0" mnemonicParsing="false" onAction="#buscarImagen" text="Probar con imagen" />
+            <Button fx:id="pruebaImagen" layoutX="97.0" layoutY="260.0" mnemonicParsing="false" onAction="#buscarImagen" text="Probar con imagen" />
             <Button fx:id="pruebaLector" disable="true" layoutX="96.0" layoutY="302.0" mnemonicParsing="false" onAction="#probarLector" prefHeight="34.0" prefWidth="142.0" text="Probar con lector" />
             <Text layoutX="39.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aqui puede probar el emparejado con su lector" wrappingWidth="256.35986328125" />
             <Text layoutX="39.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si no lo tiene, puede probar con una imagen bitmap, png o jpeg" wrappingWidth="256.35986328125" />

@@ -41,7 +41,6 @@ create table infaut.alumno (
 CREATE TABLE asistencia (
     id_asistencia SERIAL PRIMARY KEY,
     id_alumno INT NOT NULL,
-    id_aula INT,
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_alumno) REFERENCES alumno(id_alumno),
     FOREIGN KEY (id_aula) REFERENCES aula(id_aula)
