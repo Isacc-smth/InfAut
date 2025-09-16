@@ -16,7 +16,9 @@ import javafx.embed.swing.SwingFXUtils;
 
 import javax.imageio.ImageIO;
 
+import ctn.infaut.DAO.HuellaDAO;
 import ctn.infaut.controllers.AlumnoSingleton;
+import ctn.infaut.controllers.Huella;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +27,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -43,6 +47,8 @@ public class MenuHuellaController implements Initializable {
 	private Button subirImagen;
 	@FXML
 	private Button buscadorAlumno;
+	@FXML
+	private Button registrarHuella;
 	@FXML
 	private TextField Apellido;
 	@FXML
@@ -102,6 +108,27 @@ public class MenuHuellaController implements Initializable {
         Apellido.setText(AlumnoSingleton.getInstance().getApellido());
 	}
 
+    @FXML
+    private void guardarHuella(ActionEvent event) {
+        HuellaDAO HuellaSQL = new HuellaDAO();
+        Huella h = new Huella(
+            Integer.parseInt(idAlumno.getText()),
+            seleccionado.getAbsolutePath()
+        );
+
+        if (HuellaSQL.insertar(h)) {
+            Alert seInsertoLaHuella = AlertFactory.generateAlert(
+                AlertType.INFORMATION, "Se registro la huella con exito"
+            );
+            seInsertoLaHuella.show();
+        } else {
+            Alert noSeInsertoLaHuella = AlertFactory.generateAlert(
+                AlertType.INFORMATION, "Se registro la huella con exito"
+            );
+            noSeInsertoLaHuella.show();
+        }
+    }
+
     private void abrirFXML(String fxml, String title) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         try {
@@ -120,5 +147,4 @@ public class MenuHuellaController implements Initializable {
             Logger.getLogger(MenuAdminController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-
 }

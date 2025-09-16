@@ -31,18 +31,18 @@ import ctn.infaut.controllers.Huella;
  */
 public class HuellaDAO {
     private String keyPgCrypto;
-    private final Properties props = new Properties();
+    // private final Properties props = new Properties();
 
 	public String getKeyPgCrypto() { return keyPgCrypto; }
 
-    public HuellaDAO() throws SQLException { 
-        try (FileInputStream keys = new FileInputStream("db.properties")) {
-            props.load(keys);
-            this.keyPgCrypto =  props.getProperty("DB_ENCRYPTION_KEY");
-        } catch (IOException e) {
-            System.err.println("CRITICO: no se pudo obtener la clave de desencriptacion: " +
-                    e.getMessage()); 
-        }
+    public HuellaDAO() { 
+        // try (FileInputStream keys = new FileInputStream("db.properties")) {
+        //     props.load(keys);
+        //     // this.keyPgCrypto =  props.getProperty("DB_ENCRYPTION_KEY");
+        // } catch (IOException e) {
+        //     System.err.println("CRITICO: no se pudo obtener la clave de desencriptacion: " +
+        //             e.getMessage()); 
+        // }
     }
     
     /**
@@ -53,12 +53,10 @@ public class HuellaDAO {
      *
      */
     public boolean insertar(Huella h) {
-        String sql = "INSERT INTO infaut.huella VALUES (?,?,PGP_SYM_ENCRYPT(?, ?))";
+        String sql = "INSERT INTO infaut.huella (imagen_huella, id_alumno) VALUES (?,?)";
         try (PreparedStatement pstmt = Conexion.getCon().prepareStatement(sql)) {
-            pstmt.setInt(1, h.getIdHuella());
+            pstmt.setBytes(1, h.getSerializada());
             pstmt.setInt(2, h.getIdAlumno());
-            pstmt.setBytes(3, h.getImagenHuella());
-            pstmt.setString(4, this.keyPgCrypto);
             pstmt.executeUpdate();
 
             return true;
@@ -118,7 +116,7 @@ public class HuellaDAO {
      * correctamente, null de lo contrario
      * 
      */
-    public ArrayList<Huella> obtenerHuellas() {
+    public static ArrayList<Huella> obtenerHuellas() {
         ArrayList<Huella> huellas = new ArrayList<Huella>();
         String sql = "SELECT * FROM infaut.huella WHERE 1=1";
         try (Statement stmt = Conexion.getCon().createStatement()) {
@@ -126,8 +124,8 @@ public class HuellaDAO {
            while (rs.next()) {
                huellas.add(new Huella(
                     rs.getInt("id_huella"),
-                    rs.getInt("id_alumno"),
-                    rs.getBytes("imagen_huella")
+                    rs.getBytes("imagen_huella"),
+                    rs.getInt("id_alumno")
                ));
            } 
            return huellas;

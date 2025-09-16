@@ -102,6 +102,7 @@ public class MenuAdminController implements Initializable {
 
     @FXML
     private void openFingerprintMenu(ActionEvent event) throws IOException {
+        openFXML("MenuHuella.fxml", "Menu para insertar huellas", event);
     }
 
     @FXML
