@@ -1,6 +1,10 @@
 /* CSS general para todos los menus, a fin de mantener una consistencia */
 @import url("colors.css");
 
+*:disabled {
+    -fx-opacity: 0.50;
+}
+
 .root {
     -fx-background-color: -crimson;
     -fx-padding: 20;
@@ -58,7 +62,7 @@
     -fx-padding: 8 16;
 }
 
-.menu-bar {
+.menu-bar .context-menu {
     -fx-background-color: -beige;      /* deep background */
     -fx-border-color: -brownish-beige;        /* subtle underline */
     -fx-border-width: 0 0 2 0;
