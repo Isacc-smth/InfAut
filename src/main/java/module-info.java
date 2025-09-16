@@ -8,6 +8,9 @@ module ctn.infaut {
     requires com.zaxxer.hikari;
     requires com.fazecast.jSerialComm;
     requires com.machinezoo.sourceafis;
+    requires javafx.graphics;
+    requires javafx.swing;
+    requires java.desktop;
 
     opens ctn.infaut to javafx.fxml;
     opens ctn.infaut.controllers to javafx.base;
