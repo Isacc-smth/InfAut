@@ -14,13 +14,19 @@ import java.util.ResourceBundle;
 import javafx.scene.control.TableView;
 
 import ctn.infaut.DAO.MateriaDAO;
+import ctn.infaut.controllers.AulaSingleton;
+import ctn.infaut.controllers.CursoSingleton;
 import ctn.infaut.controllers.Materia;
+import java.io.IOException;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.collections.FXCollections;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -29,6 +35,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * 
@@ -45,6 +53,8 @@ public class MenuMateriaController implements Initializable {
     private Button Cancel;
     @FXML
     private Button Delete;
+	@FXML
+	private Button buscarAula;
 
     @FXML
     private TableView<Materia> ClassesTable;
@@ -88,6 +98,7 @@ public class MenuMateriaController implements Initializable {
         HoraInicio.setDisable(false);
         HoraFin.setDisable(false);
         NumSala.setDisable(false);
+		buscarAula.setDisable(false);
 
         isMod = false;
     }
@@ -270,4 +281,30 @@ public class MenuMateriaController implements Initializable {
             NumSala.getText().trim().isEmpty()
         );
     }
+
+	@FXML
+	private void abrirBuscadorAula(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("BuscarAula.fxml"));
+            System.out.println("Buscando en: " + getClass().getResource("BuscarAula.fxml"));
+
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+            stage.setTitle("Buscar Aula");
+
+            stage.showAndWait();
+			
+			NumSala.setText(String.valueOf(AulaSingleton.getInstance().getIdAula()));
+
+        } catch (IOException e) {
+            Alert aperturaFXMLFallo = AlertFactory.generateAlert(AlertType.ERROR,
+                    "CRITICO:",
+                    "No se pudo abir el buscador: " + e.getMessage()
+                );
+            aperturaFXMLFallo.showAndWait();
+        }
+	}
 }

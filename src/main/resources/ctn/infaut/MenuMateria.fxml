@@ -7,11 +7,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.MenuMateriaController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@/ctn/infaut/styles.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.MenuMateriaController">
     <children>
-        <Pane layoutY="-8.0" prefHeight="408.0" prefWidth="284.0" style="-fx-background-color: gray;">
+        <Pane layoutY="-8.0" prefHeight="408.0" prefWidth="284.0" styleClass="top-bar">
             <children>
-                <Pane layoutX="38.0" layoutY="24.0" prefHeight="239.0" prefWidth="200.0" style="-fx-background-color: brown;">
+                <Pane layoutX="38.0" layoutY="24.0" prefHeight="251.0" prefWidth="200.0" style="-fx-background-color: brown;">
                     <children>
                         <Label layoutX="45.0" layoutY="14.0" text="Menu de Materias" textFill="#c3c3c3" />
                         <TextField fx:id="NumMateria" disable="true" layoutX="20.0" layoutY="31.0" promptText="Numero de Materia" />
@@ -19,6 +19,7 @@
                         <TextField fx:id="HoraInicio" disable="true" layoutX="17.0" layoutY="107.0" promptText="Hora de Inicio" />
                         <TextField fx:id="HoraFin" disable="true" layoutX="19.0" layoutY="143.0" promptText="Hora de Culminacion" />
                         <TextField fx:id="NumSala" disable="true" layoutX="19.0" layoutY="179.0" promptText="Numero de sala" />
+                  <Button fx:id="buscarAula" alignment="TOP_LEFT" disable="true" layoutX="17.0" layoutY="216.0" mnemonicParsing="false" onAction="#abrirBuscadorAula" text="🔍" />
                     </children>
                 </Pane>
                 <Button fx:id="New" layoutX="21.0" layoutY="289.0" mnemonicParsing="false" onAction="#newEntry" text="Nuevo" />

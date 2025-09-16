@@ -51,6 +51,7 @@ public class BuscarAulaController implements Initializable {
                     "Hubo un error al obtener los cursos: " + 
                     e.getMessage()
                 );
+            System.out.println(e.getMessage());
             consultaInicialFallo.show();
         }
 	}	
