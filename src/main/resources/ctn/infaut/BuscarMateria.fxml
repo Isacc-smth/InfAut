@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #420e12;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.BuscarAulaController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91171f" height="300.0" stroke="TRANSPARENT" strokeType="INSIDE" width="460.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bf4342" height="300.0" stroke="TRANSPARENT" strokeType="INSIDE" width="420.0" />
+      <TableView fx:id="tablaDeBusqueda" layoutX="52.0" layoutY="14.0" onMouseClicked="#completarEnSingleton" prefHeight="272.0" prefWidth="290.0">
+        <columns>
+          <TableColumn fx:id="ColumnaId" prefWidth="57.0" text="idAula" />
+          <TableColumn fx:id="ColumnaAula" prefWidth="231.0" text="Aula" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -1,5 +1,9 @@
 package ctn.infaut.DAO;
 
+import java.sql.SQLException;
+
+import ctn.infaut.connection.Conexion;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,7 +11,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import ctn.infaut.DTO.CursoMateriaDTO;
-import ctn.infaut.connection.Conexion;
 
 public class CursoMateriaDAO {
     public boolean insertar(CursoMateriaDTO cursoMateria) {

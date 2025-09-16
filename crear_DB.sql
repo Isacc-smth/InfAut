@@ -1,6 +1,6 @@
 -- NOTE: Al agregar tablas o campos nuevos recuerda que se deben usar minusculas y _
+-- Para más detalles referirse a la documentación oficicial de PostgreSQL
 
--- Creamos el schema infaut si no existe
 create schema if not exists infaut;
 
 -- Tabla de cursos

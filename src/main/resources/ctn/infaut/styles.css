@@ -1,0 +1,104 @@
+/* CSS general para todos los menus, a fin de mantener una consistencia */
+@import url("colors.css");
+
+*:disabled {
+    -fx-opacity: 0.50;
+}
+
+.root {
+    -fx-background-color: -crimson;
+    -fx-padding: 20;
+}
+
+.table-view {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: transparent;
+    -fx-background-color: white;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(-rose-softer, -rose);
+    -fx-background-radius: 10 10 0 0;
+}
+
+.table-view .column-header {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.table-view .table-row-cell {
+    -fx-font-size: 13px;
+}
+
+.table-view .placeholder {
+    -fx-text-fill: #333;
+    -fx-font-size: 14px;
+}
+
+.label {
+    -fx-text-fill: Black;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+    -fx-padding: 6 10;
+    -fx-font-size: 13px;
+}
+
+.button {
+    -fx-background-color: -beige-dark;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-font-size: 14px;
+    -fx-text-fill: #000;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 8 16;
+}
+
+.menu-bar .context-menu {
+    -fx-background-color: -beige;      /* deep background */
+    -fx-border-color: -brownish-beige;        /* subtle underline */
+    -fx-border-width: 0 0 2 0;
+    -fx-padding: 5 10 5 10;
+}
+
+.menu {
+    -fx-text-fill: -beige;                    /* beige text for contrast */
+    -fx-padding: 5 15 5 15;
+}
+
+.menu:hover, .menu:showing {
+    -fx-background-color: -rose;              /* highlight on hover */
+    -fx-text-fill: -beige;
+}
+
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: -crimson-dark;             /* darker text */
+    -fx-padding: 5 20 5 20;
+}
+
+.menu-item:hover {
+    -fx-background-color: -rose-soft;         /* softer rose hover */
+    -fx-text-fill: -beige;
+}
+
+.top-bar {
+    -fx-background-color: linear-gradient(-crimson-darker, -crimson-dark)
+}
+
+.items {
+    -fx-margin: 10;
+    -fx-padding-right: 20;
+}
+
+.button:hover {
+    -fx-background-color: -beige;
+}

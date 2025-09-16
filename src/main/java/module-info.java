@@ -6,6 +6,7 @@ module ctn.infaut {
     requires java.sql;
 
     requires com.zaxxer.hikari;
+    requires com.fazecast.jSerialComm;
     requires com.machinezoo.sourceafis;
 
     opens ctn.infaut to javafx.fxml;

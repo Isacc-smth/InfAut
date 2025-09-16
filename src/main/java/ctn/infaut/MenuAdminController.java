@@ -75,7 +75,8 @@ public class MenuAdminController implements Initializable {
         try {
             root = loader.load();
 
-            stage.setScene(new Scene(root));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
             stage.setTitle(title);
             stage.setResizable(false);
 

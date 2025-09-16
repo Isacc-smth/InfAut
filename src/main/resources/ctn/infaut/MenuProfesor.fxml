@@ -8,47 +8,32 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-    prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d0303;"
-    xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="ctn.infaut.MenuProfesorController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d0303;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.MenuProfesorController">
     <children>
-        <Pane disable="true" layoutX="35.0" layoutY="54.0" prefHeight="205.0" prefWidth="200.0"
-            style="-fx-background-color: rgb(120, 50, 50); -fx-border-style: solid; -fx-background-radius: 19px; -fx-border-radius: 19px; -fx-border-color: rgb(255, 255, 255);">
+        <Pane layoutX="35.0" layoutY="54.0" prefHeight="205.0" prefWidth="200.0" style="-fx-background-color: rgb(120, 50, 50); -fx-border-style: solid; -fx-background-radius: 19px; -fx-border-radius: 19px; -fx-border-color: rgb(255, 255, 255);">
             <children>
-                <Label layoutX="35.0" prefHeight="28.0" prefWidth="130.0" text="Menu de Docentes"
-                    textFill="WHITE" />
-                <TextField fx:id="TeacherIDField" disable="true" layoutX="12.0" layoutY="28.0"
-                    promptText="ID del Docente" />
+                <Label alignment="CENTER" layoutX="39.0" layoutY="5.0" prefHeight="19.0" prefWidth="123.0" style="-fx-background-color: #BF4342;" text="Menu de Docentes" textAlignment="CENTER" textFill="WHITE" />
+                <TextField fx:id="TeacherIDField" disable="true" layoutX="14.0" layoutY="36.0" promptText="ID del Docente" />
+              <TextField fx:id="NameField" disable="true" layoutX="14.0" layoutY="77.0" promptText="Nombre" />
+              <TextField fx:id="LastNameField" disable="true" layoutX="14.0" layoutY="115.0" promptText="Apellido" />
+              <TextField fx:id="IDNumberField" disable="true" layoutX="14.0" layoutY="158.0" promptText="CI (Sin puntos o espacios)" />
             </children>
         </Pane>
-        <Pane layoutX="271.0" layoutY="-1.0" prefHeight="400.0" prefWidth="329.0"
-            style="-fx-background-color: rgb(125, 90, 90);">
+        <Pane layoutX="271.0" layoutY="-1.0" prefHeight="400.0" prefWidth="329.0" style="-fx-background-color: rgb(125, 90, 90);">
             <children>
-                <TableView fx:id="TeachersList" layoutX="16.0" layoutY="48.0"
-                    onMouseClicked="#completeFields" prefHeight="297.0" prefWidth="302.0">
+                <TableView fx:id="TeachersList" layoutX="14.0" layoutY="52.0" onMouseClicked="#completeFields" prefHeight="297.0" prefWidth="298.0">
                     <columns>
                         <TableColumn fx:id="idDocente" prefWidth="75.0" text="idDocente" />
                         <TableColumn fx:id="Nombre" prefWidth="75.0" text="Nombre" />
                         <TableColumn fx:id="Apellido" prefWidth="75.0" text="Apellido" />
-                        <TableColumn fx:id="CI" prefWidth="75.0" text="CI (Sin puntos ni espacios)" />
+                        <TableColumn fx:id="CI" prefWidth="89.0" text="CI" />
                     </columns>
                 </TableView>
             </children>
         </Pane>
-        <TextField fx:id="NameField" disable="true" layoutX="45.0" layoutY="121.0"
-            promptText="Nombre" />
-        <TextField fx:id="LastNameField" disable="true" layoutX="45.0" layoutY="166.0"
-            promptText="Apellido" />
-        <TextField fx:id="IDNumberField" disable="true" layoutX="45.0" layoutY="209.0"
-            promptText="Numero de CI" />
-        <Button fx:id="New" layoutX="13.0" layoutY="318.0" mnemonicParsing="false"
-            onAction="#newEntry" text="Nuevo" />
-        <Button fx:id="Delete" disable="true" layoutX="177.0" layoutY="318.0"
-            mnemonicParsing="false" onAction="#deleteEntry" text="Borrar" />
-        <Button fx:id="Cancel" cancelButton="true" disable="true" layoutX="93.0" layoutY="362.0"
-            mnemonicParsing="false" onAction="#cancelOperation" text="Cancelar" />
-        <Button fx:id="Save" cancelButton="true" disable="true" layoutX="95.0" layoutY="318.0"
-            mnemonicParsing="false" onAction="#saveChanges" text="Guardar" />
+        <Button fx:id="New" layoutX="35.0" layoutY="292.0" mnemonicParsing="false" onAction="#newEntry" prefHeight="34.0" prefWidth="85.0" text="Nuevo" />
+        <Button fx:id="Delete" disable="true" layoutX="132.0" layoutY="342.0" mnemonicParsing="false" onAction="#deleteEntry" prefHeight="34.0" prefWidth="85.0" text="Borrar" />
+        <Button fx:id="Cancel" cancelButton="true" disable="true" layoutX="35.0" layoutY="342.0" mnemonicParsing="false" onAction="#cancelOperation" text="Cancelar" />
+        <Button fx:id="Save" cancelButton="true" disable="true" layoutX="132.0" layoutY="292.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="34.0" prefWidth="85.0" text="Guardar" />
     </children>
 </AnchorPane>
