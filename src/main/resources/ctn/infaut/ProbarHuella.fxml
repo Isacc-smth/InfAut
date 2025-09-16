@@ -8,21 +8,22 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #91171F;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #91171F;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.MenuHuellaController">
    <children>
       <Circle fill="#bf2b2b" layoutX="131.0" layoutY="200.0" radius="364.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle fill="#bf4342" layoutX="81.0" layoutY="200.0" radius="251.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Pane layoutX="132.0" layoutY="22.0" prefHeight="356.0" prefWidth="442.0" style="-fx-background-color: white;" styleClass="small-pane">
          <children>
-            <ImageView fitHeight="191.0" fitWidth="192.0" layoutX="61.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="191.0" fitWidth="242.0" layoutX="61.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Downloads/InFauth%20-%201.png" />
+                  <Image url="@InFauth.png" />
                </image>
             </ImageView>
             <Button fx:id="pruebaImagen" layoutX="96.0" layoutY="260.0" mnemonicParsing="false" onAction="#buscarImagen" text="Probar con imagen" />
             <Button fx:id="pruebaLector" disable="true" layoutX="96.0" layoutY="302.0" mnemonicParsing="false" onAction="#probarLector" prefHeight="34.0" prefWidth="142.0" text="Probar con lector" />
             <Text layoutX="39.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aqui puede probar el emparejado con su lector" wrappingWidth="256.35986328125" />
-            <Text layoutX="67.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si no lo tiene, puede probar con una imagen bitmap, png o jpeg" wrappingWidth="200.35986328125" />
+            <Text layoutX="39.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si no lo tiene, puede probar con una imagen bitmap, png o jpeg" wrappingWidth="256.35986328125" />
+            <Text layoutX="110.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Se mostrara aqui la salida del emparejamiento" wrappingWidth="256.35986328125" />
          </children>
       </Pane>
    </children>
