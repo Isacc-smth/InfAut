@@ -61,14 +61,14 @@ mvn exec:java -Dexec.mainClass="ctn.infaut.App" # Ejecutar mediante maven
 
 #### Replicar la base de datos y proporcionarla al proyecto
 
-1. Utlice el [script SQL](crear_DB.sql)
+1. Para crear la BD puede usar uno de los scripts. En este repo tiene versiones para [PostgreSQL](crear_DB.sql) y [MySQL](db_mysql.sql)
 2. Cree un archivo `db.properties`
 3. Especifique las credenciales con el siguiente formato.
 ```sh
    url=jdbc:postgresql://[host]:[puerto, por defecto es 5432]/[nombre de la DB] 
 ```
 4. Quizá tenga que agregar:
-```sh
+``` java
     db.user={usuario}
     db.password={contraseña}
 ```
