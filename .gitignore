@@ -3,6 +3,8 @@ target/
 .project
 .gradle/
 
+tbd.md
+
 # IntelliJ IDEA
 .idea/
 
@@ -20,4 +22,4 @@ nbactions.xml
 db.properties
 
 # Script personal para compilar el programa mas rapido
-run-ABM.sh
+run.sh
