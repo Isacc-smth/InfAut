@@ -4,8 +4,6 @@
 
 Este es el repositorio del proyecto Infaut, un proyecto originalmente 
 expuesto en la Expotecnia 2025, organizada anualmente por el colegio.
-El sistema esta estructurado para facilitar la distribucion e implementacion
-en otras instituciones del pais.
 
 ## POR HACER:
 - Finalizar el vinculo entre entidades 'varios a varios'. 
