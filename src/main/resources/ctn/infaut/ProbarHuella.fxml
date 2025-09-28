@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #91171F;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.MenuHuellaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #91171F;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctn.infaut.ProbarHuellaController">
    <children>
       <Circle fill="#bf2b2b" layoutX="131.0" layoutY="200.0" radius="364.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle fill="#bf4342" layoutX="81.0" layoutY="200.0" radius="251.0" stroke="TRANSPARENT" strokeType="INSIDE" />
@@ -20,10 +20,10 @@
                </image>
             </ImageView>
             <Button fx:id="pruebaImagen" layoutX="97.0" layoutY="260.0" mnemonicParsing="false" onAction="#buscarImagen" text="Probar con imagen" />
-            <Button fx:id="pruebaLector" disable="true" layoutX="96.0" layoutY="302.0" mnemonicParsing="false" onAction="#probarLector" prefHeight="34.0" prefWidth="142.0" text="Probar con lector" />
+            <Button fx:id="pruebaLector" disable="true" layoutX="96.0" layoutY="302.0" mnemonicParsing="false" onAction="#probarLector" prefHeight="34.0" prefWidth="181.0" text="Probar con lector" />
             <Text layoutX="39.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aqui puede probar el emparejado con su lector" wrappingWidth="256.35986328125" />
             <Text layoutX="39.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si no lo tiene, puede probar con una imagen bitmap, png o jpeg" wrappingWidth="256.35986328125" />
-            <Text layoutX="110.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Se mostrara aqui la salida del emparejamiento" wrappingWidth="256.35986328125" />
+            <Text fx:id="txtAutenticacion" layoutX="110.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="256.35986328125" />
          </children>
       </Pane>
    </children>

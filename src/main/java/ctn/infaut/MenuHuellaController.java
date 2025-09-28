@@ -43,23 +43,24 @@ import javafx.stage.Stage;
  */
 public class MenuHuellaController implements Initializable {
 
-	@FXML
+    @FXML
 	private Button subirImagen;
-	@FXML
-	private Button buscadorAlumno;
-	@FXML
-	private Button registrarHuella;
-	@FXML
+    @FXML
 	private TextField Apellido;
-	@FXML
+    @FXML
 	private TextField Nombre;
-	@FXML
+    @FXML
 	private TextField idAlumno;
 
     @FXML
     private ImageView previewHuella;
 
+    @FXML
     private File seleccionado;
+	@FXML
+	private Button pruebaImagen;
+	@FXML
+	private Button pruebaLector;
 
 	/**
 	 * Initializes
@@ -94,7 +95,7 @@ public class MenuHuellaController implements Initializable {
 		throw new UnsupportedOperationException("Aun no se implementaron lectores");
 	}
 
-    @FXML
+	@FXML
     private void abrirPruebaEmparejamiento(ActionEvent event) {
         abrirFXML("ProbarHuella.fxml", "Probar Emparejamiento de huellas");
     }
@@ -103,12 +104,12 @@ public class MenuHuellaController implements Initializable {
 	private void buscarAlumno(ActionEvent event) {
         abrirFXML("BuscarAlumno.fxml", "Buscar Alumno");
 
-        idAlumno.setText(String.valueOf(AlumnoSingleton.getInstance().getIdAlumno()));
-        Nombre.setText(AlumnoSingleton.getInstance().getNombre());
-        Apellido.setText(AlumnoSingleton.getInstance().getApellido());
+       idAlumno.setText(String.valueOf(AlumnoSingleton.getInstance().getIdAlumno()));
+       Nombre.setText(AlumnoSingleton.getInstance().getNombre());
+       Apellido.setText(AlumnoSingleton.getInstance().getApellido());
 	}
 
-    @FXML
+	@FXML
     private void guardarHuella(ActionEvent event) {
         HuellaDAO HuellaSQL = new HuellaDAO();
         Huella h = new Huella(

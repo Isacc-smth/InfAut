@@ -96,4 +96,26 @@ public class AlumnoDAO {
             return false;
         }
     }
+
+    public static Alumno obtenerPorID(int id_alumno) {
+        String sql = "SELECT nombre, apellido FROM infaut.alumno WHERE id_alumno = ?;";
+        Alumno match = null;
+        try (PreparedStatement stmt = Conexion.getCon().prepareStatement(sql)) {
+            stmt.setInt(1, id_alumno);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                match = new Alumno(
+                    id_alumno,
+                    rs.getString("nombre"),
+                    rs.getString("apellido")
+                );
+            }
+            return match;
+        } catch (SQLException e) {
+            System.err.println("Hubo un error al obtener al alumno: " + e.getMessage());
+            
+            return null;
+        }
+    }
 }

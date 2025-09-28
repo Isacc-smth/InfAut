@@ -42,7 +42,7 @@ public class HuellaDAO {
         // } catch (IOException e) {
         //     System.err.println("CRITICO: no se pudo obtener la clave de desencriptacion: " +
         //             e.getMessage()); 
-        // }
+       // }
     }
     
     /**

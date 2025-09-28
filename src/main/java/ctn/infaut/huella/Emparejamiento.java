@@ -1,32 +1,51 @@
 package ctn.infaut.huella;
 
 import java.util.ArrayList;
-
-import com.machinezoo.sourceafis.FingerprintImage;
 import com.machinezoo.sourceafis.FingerprintMatcher;
-
+import com.machinezoo.sourceafis.FingerprintTemplate;
 import ctn.infaut.DAO.HuellaDAO;
-import ctn.infaut.DTO.AlumnoHuellaDTO;
 import ctn.infaut.controllers.Huella;
 
 public class Emparejamiento {
     private static ArrayList<Huella> huellas;
 
-    private Emparejamiento() {}
-
     static {
         huellas = HuellaDAO.obtenerHuellas();
+        // Filtrar huellas inválidas al iniciar
+        huellas.removeIf(h -> h.getImagen() == null);
     }
 
-    public static boolean emparejar(Huella sujeto) {
+    private Emparejamiento() {}
+
+    /** Empareja un sujeto con las huellas registradas 
+     *
+     * @param sujeto la huella a emparejar
+     *
+     * @return los datos del sujeto si se encuentra coincidencia, null si no se obtiene nada
+     * */
+    public static Huella emparejar(FingerprintTemplate sujeto) {
+        if (sujeto == null) {
+            throw new IllegalArgumentException("El template del sujeto es null");
+        }
+
         double umbral = 40.0;
-        FingerprintMatcher emparejador = new FingerprintMatcher(sujeto.getImagen());
+        FingerprintMatcher matcher = new FingerprintMatcher(sujeto);
+
+        Huella mejorCoincidencia = null;
+        double mejorPuntaje = 0.0;
 
         for (Huella candidato : huellas) {
-            double puntaje = emparejador.match(candidato.getImagen());
-            if (puntaje >= umbral) 
-                return true;
+            if (candidato.getImagen() == null) continue;
+
+            double puntaje = matcher.match(candidato.getImagen());
+            System.out.println("Score con alumno " + candidato.getIdAlumno() + ": " + puntaje);
+
+            if (puntaje > mejorPuntaje && puntaje >= umbral) {
+                mejorPuntaje = puntaje;
+                mejorCoincidencia = candidato;
+            }
         }
-        return false;
+
+        return mejorCoincidencia;
     }
 }
