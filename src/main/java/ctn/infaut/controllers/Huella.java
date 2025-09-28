@@ -20,6 +20,14 @@ public class Huella {
         this.serializada = HuellaUtils.serializarDesdePath(pathHuella);
     }
 
+    public Huella(String pathHuella) {
+        // No quiero reescribir el metodo para obtener la huella, porque es larguito
+        this.imagen = HuellaUtils.obtenerTemplateDesdePath(pathHuella);
+        if (this.imagen == null) 
+            throw new IllegalArgumentException("No se pudo cargar la huella desde: " + pathHuella);
+        this.serializada = HuellaUtils.serializarDesdePath(pathHuella);
+    }
+
     // Instanciar huella desde el path de una imagen seleccionada
         public Huella(Integer idHuella, Integer idAlumno, String pathHuella, String horaEntrada) {
             this.idHuella = idHuella;

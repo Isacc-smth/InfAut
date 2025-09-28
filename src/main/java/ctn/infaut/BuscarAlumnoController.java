@@ -1,5 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+/*           * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package ctn.infaut;
@@ -75,12 +74,11 @@ public class BuscarAlumnoController implements Initializable {
             AlumnoCursoDTO seleccion = tablaDeBusqueda.getSelectionModel().getSelectedItem();
             AlumnoSingleton.getInstance().setIdAlumno(seleccion.getIdAlumno()); 
             AlumnoSingleton.getInstance().setNombre(seleccion.getNombre());
-            AlumnoSingleton.getInstance().setApellido(seleccion.getApellido());
+            AlumnoSingleton.getInstance() .setApellido(seleccion.getApellido());
             AlumnoSingleton.getInstance().setCi(seleccion.getCi());
             AlumnoSingleton.getInstance().setIdCurso(seleccion.getIdCurso());
 
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource())
-                .getScene().getWindow();
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.close();
         }
 	}

@@ -34,4 +34,10 @@ public class Alumno {
         this.ci = ci;
         this.idCurso = idCu;
     }
+
+    public Alumno(Integer id_alumno, String nombre, String apellido) {
+        this.idAlumno = id_alumno;
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
 }
