@@ -19,7 +19,7 @@ nbactions.xml
 .classpath
 
 # Archivo que va a utlizar para obtener las credenciales de la base de datos
-db.properties
+*.properties
 
 # Script personal para compilar el programa mas rapido
 run.sh

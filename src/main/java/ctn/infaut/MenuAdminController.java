@@ -91,6 +91,11 @@ public class MenuAdminController implements Initializable {
     }
 
     @FXML
+    private void openDBConfig(ActionEvent event) throws IOException {
+        openFXML("ConfigDB.fxml","Configuracion de Base de Datos", event);
+    }
+
+    @FXML
     private void openTeacherMenu(ActionEvent event) throws IOException {
         openFXML("MenuProfesor.fxml", "Menu de Tabla Docentes", event);
     }
