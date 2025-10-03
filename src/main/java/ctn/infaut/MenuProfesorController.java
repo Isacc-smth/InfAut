@@ -228,6 +228,6 @@ public class MenuProfesorController implements Initializable {
             NameField.getText().isBlank() ||
             LastNameField.getText().isBlank() ||
             IDNumberField.getText().isBlank()
-       );
+        );
     }
 }
