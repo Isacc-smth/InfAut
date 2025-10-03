@@ -6,6 +6,7 @@ import com.machinezoo.sourceafis.FingerprintTemplate;
 import ctn.infaut.DAO.HuellaDAO;
 import ctn.infaut.controllers.Huella;
 
+// FIXME: Arreglar emparejamiento
 public class Emparejamiento {
     private static ArrayList<Huella> huellas;
 
@@ -17,7 +18,7 @@ public class Emparejamiento {
 
     private Emparejamiento() {}
 
-    /** Empareja un sujeto con las huellas registradas 
+    /** Empareja un sujeto con las huellas registradas en la base de datos
      *
      * @param sujeto la huella a emparejar
      *
