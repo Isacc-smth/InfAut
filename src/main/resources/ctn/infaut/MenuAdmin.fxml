@@ -34,7 +34,8 @@
       <menus>
         <Menu fx:id="ActionsMenu" mnemonicParsing="false" text="Acciones">
           <items>
-            <MenuItem fx:id="ExitButton" mnemonicParsing="false" onAction="#exitApp" text="Salir" />
+              <MenuItem fx:id="DBConfig" mnemonicParsing="false" onAction="#openDBConfig" text="Configurar BD" />
+              <MenuItem fx:id="ExitButton" mnemonicParsing="false" onAction="#exitApp" text="Salir" />
           </items>
         </Menu>
         <Menu fx:id="TableSelectionMenu" mnemonicParsing="false" text="Tablas">

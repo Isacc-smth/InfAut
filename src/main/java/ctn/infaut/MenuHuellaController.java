@@ -69,9 +69,7 @@ public class MenuHuellaController implements Initializable {
 	 * class.
 	 */
 	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		// TODO
-	}	
+	public void initialize(URL url, ResourceBundle rb) {}	
 
 	@FXML
 	private void seleccionarImagen(ActionEvent event) throws IOException {

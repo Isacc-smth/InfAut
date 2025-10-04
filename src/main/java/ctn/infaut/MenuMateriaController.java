@@ -4,8 +4,6 @@
  */
 package ctn.infaut;
 
-// TODO: Menu de buscar sala
-
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -285,8 +283,8 @@ public class MenuMateriaController implements Initializable {
 	@FXML
 	private void abrirBuscadorAula(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("BuscarAula.fxml"));
-            System.out.println("Buscando en: " + getClass().getResource("BuscarAula.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ctn/infaut/BuscarAula.fxml"));
+            System.out.println("Buscando en: " + getClass().getResource("/ctn/infaut/BuscarAula.fxml"));
 
             Parent root = loader.load();
             Stage stage = new Stage();
@@ -304,6 +302,7 @@ public class MenuMateriaController implements Initializable {
                     "CRITICO:",
                     "No se pudo abir el buscador: " + e.getMessage()
                 );
+            e.printStackTrace();
             aperturaFXMLFallo.showAndWait();
         }
 	}

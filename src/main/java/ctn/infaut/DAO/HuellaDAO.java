@@ -12,7 +12,7 @@ import java.util.Properties;
 import ctn.infaut.connection.Conexion;
 import ctn.infaut.controllers.Huella;
 
-// TODO: Refactor
+// TODO: Refactor (falta aun el lector)
 
 /**
  * Clase para controllar las consultas SQL realizadas por {@link ctn.infaut.MenuHuellaController}.
@@ -30,20 +30,9 @@ import ctn.infaut.controllers.Huella;
  * @see ctn.infaut.MenuHuellaController
  */
 public class HuellaDAO {
-    private String keyPgCrypto;
-    // private final Properties props = new Properties();
 
-	public String getKeyPgCrypto() { return keyPgCrypto; }
-
-    public HuellaDAO() { 
-        // try (FileInputStream keys = new FileInputStream("db.properties")) {
-        //     props.load(keys);
-        //     // this.keyPgCrypto =  props.getProperty("DB_ENCRYPTION_KEY");
-        // } catch (IOException e) {
-        //     System.err.println("CRITICO: no se pudo obtener la clave de desencriptacion: " +
-        //             e.getMessage()); 
-       // }
-    }
+    // Creo que los DAO deberian ser un singleton
+    public HuellaDAO() {}
     
     /**
      * Metodo para insertar una huella en la base de datos

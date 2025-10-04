@@ -10,7 +10,7 @@
       <TableView fx:id="tablaDeBusqueda" layoutX="103.0" layoutY="80.0" onMouseClicked="#completarEnSingleton" prefHeight="200.0" prefWidth="284.0">
         <columns>
           <TableColumn fx:id="ColumnaId" prefWidth="57.0" text="id" />
-          <TableColumn fx:id="ColumnaCurso" prefWidth="226.0" text="Curso" />
+          <TableColumn fx:id="ColumnaAula" prefWidth="226.0" text="Aula" />
         </columns>
       </TableView>
    </children>
